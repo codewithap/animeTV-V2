@@ -3,72 +3,81 @@
 
 <style>
 
+/* .topAnimes .cards, .top100 .cards {
+    overflow-x: auto;
+    width: 100%;
+    display: flex;
+    margin: 0 0.2rem;
+} */
 
-    
+.rank{
+    display: block;
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    z-index: 1;
+    background-color: #333;
+    padding: 0 10px;
+    border-radius: 8px 8px 0 0;
+    min-width: 5ch;
+}
+
+.topAnimes .cards .card img{
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #333;
+    border-top: none;
+    box-shadow: inset 0 0 0 5px #333;
+}
 </style>
 
 
 <div class="topAnimes">
-    <h3>Trending Animes</h3>
-    <div class="cards">
+    <h3>Top Animes</h3>
+    <div class="cards" id="topAnimes">
         
-        <div class="card">
-            <a href="#"><button>
-                <div>
-                    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx142329-Oa6NT07c5KOn.jpg">
-                </div>
-                <h4>Kimetsu no Yaiba: Yuukaku-hen</h4>
-            </button></a>
-        </div>
+        
 
     </div>
+    <button></button>
 </div><br>
-
-<div class="top100">
-    <h3>Top 100 Animes</h3>
-    <div class="cards">
-        <div class="card">
-            <a href="#"><button>
-                    <div>
-                        <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21827-10F6m50H4GJK.png">
-                    </div>
-                    <h4>Violet Evergarden</h4>
-                </button></a>
-        </div>
-    </div>
-</div>
 
 
 <script>
-    const sresult = document.querySelector("#Sresult");
-    const query = `{{query}}`;
-    const base_url = "https://api.jikan.moe/v3";
-    console.log(query)
-    fetch(`${base_url}/search/anime?q=${query}`)
-        .then(res => res.json())
-        .then(data => sResult(data))
-        .catch(err => console.warn(err.message));
 
-function sResult(data){
-    let animArr = data["results"]
-    for(let i = 0;i<animArr.length;i++){
-        console.log(animArr[i]["title"],i);
-        sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"])
+    
+    const sresult = document.querySelector("#topAnimes");
+    const base_url = "https://api.jikan.moe/v3/top/anime";
+
+    function search(url) {
+        fetch(`${url}`)
+            .then(res => res.json())
+            .then(data => sResult(data))
+            .catch(err => console.warn(err.message));
     }
-}
 
-function template(title,url,imgUrl){
+    function sResult(data){
+        let animArr = data["top"]
+        for(let i = 0;i<animArr.length;i++){
+            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"],animArr[i]["rank"])
+        }
+    }
+
+    function template(title,url,imgUrl,rank){
     return `
     <div class="card">
             <a href="${url}"><button>
                 <div>
+                    <span class="rank">#${rank}</span>
                     <img src="${imgUrl}">
                 </div>
                 <h4>${title}</h4>
             </button></a>
         </div>
     `
-}
+    }
+
+    search(base_url)
 
 </script>
 
