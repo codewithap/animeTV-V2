@@ -1,0 +1,287 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Baloo Bhai 2', cursive;
+    outline: none;
+    color: #333366;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#body{
+    height: 99.9%;
+    width: 100%;
+    overflow: auto;
+    background: #fff;
+}
+
+.nav-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    z-index: 65555;
+}
+
+.nav-navbar h2{
+    font-size: 1.9rem;
+    text-shadow: 1px 1px 1px #838384, 
+                 2px 2px 5px #838384;
+}
+
+.nav-img{
+    padding: 0 0.4rem;
+}
+
+.nav-img img{
+    width: 3rem;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #515151,
+                inset -2px -2px 1px #096EFF,
+                inset 2px 2px 1px #096EFF;
+} 
+
+.search{
+    background: #f5f5f5;
+    width: 90%; 
+    margin: 0.8rem auto 2rem auto;
+    border-radius: 50px;
+    padding: 2px;
+    height: 3rem;
+    display: flex;
+    z-index: -1;
+}
+
+.search svg{
+    position: relative;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.search input{
+    border: none;
+    background: none;
+    height: 100%;
+    padding: 0 0 0 20px;
+    width: 100%;
+    font-size: 1.1rem;
+    border-radius: 50px;
+}
+
+.search:hover{
+    box-shadow: 4px 3px 5px #C7C7C7;
+    transition-duration: 0.5s;
+}
+
+.nav-bar{
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    box-shadow: 1px 1px 3px #919191;
+    border: 1px solid transparent;
+}
+
+.nav-bar svg{
+    width: 60px;
+    height: 40px;
+    color: #585858;
+}
+
+.nav-bar:hover{
+    background: #fff;
+    transition: 0.4s ease-in-out;
+    box-shadow: 1px 1px 3px #919191;
+    border: 1px solid transparent;
+}
+
+.nav{
+    position: absolute;
+    height: 70%;
+    overflow: auto;
+    width: 0px;
+    z-index: 7262;
+    transition: 0.3s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    z-index: 6666666;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+}
+
+.blur_bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(30,30,30,0.3);
+    z-index: 100;
+    backdrop-filter: blur(2px);
+    z-index: 5555555;
+}
+
+.topAnimes{
+    padding: 0.15rem 0.3rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.topAnimes h3, h3{
+    text-shadow: 1px 1px 1px #B0B0B0,
+                 1px 1px 5px #B0B0B0;
+    margin-bottom: 15px;
+    margin-left: 2rem;
+}
+
+/* .topAnimes .cards, .top100 .cards {
+    overflow-x: auto;
+    width: 100%;
+    display: flex;
+    margin: 0 0.2rem;
+} */
+
+.topAnimes .cards .card, .top100 .cards .card{
+    margin: 4px 8px;
+}
+
+.topAnimes .cards, .top100 .cards{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.topAnimes .cards .card h4{
+    width: 9rem;
+    text-align: center;
+    overflow: hidden;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    margin: 0 auto;
+    text-overflow: ellipsis;
+}
+
+.topAnimes .cards .card img, .top100 .cards .card img{
+    width: 10rem;
+    height: 14rem;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.nav button{
+    width: 90%;
+    display: block;
+    margin: 10px auto;
+    border-radius: 100px;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    border: 4px solid transparent;
+    font-weight: bold;
+    text-align: left;
+    outline: 0.3px solid #333;
+}
+
+.nav button:hover{
+    background: #37394C;
+    color: #E2E2E2;
+    transition: 0.3s;
+    box-shadow: 4px 4px 14px #9A9A9A;
+    fill: #fff;
+    border: 4px solid #37394C;
+    outline: 4px solid #37394C;
+}
+
+.nav .img img{
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid #0D5FE6;
+    box-shadow: inset 0 0 0 2px #0D5FE6;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.nav .info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
+    background: #FFFFFFD4;
+    border-radius: 10px;
+    border: 2px solid #C8C8C8;
+}
+
+.nav .info .wInfo{
+    display: flex ;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    line-height: 1.5rem;
+    padding-left: 1rem;
+}
+
+.nav button svg{
+    position: relative;
+    top:80%;
+    right: 3px;
+    transform: translateY(15%);
+    color: #000 !important;
+    fill: #fff;
+}
+
+.card button{
+    background: none;
+    border: none;
+}
+
+.card h4:hover{
+    color: #0094E6;
+    text-shadow: 1px 1px 1px #07A7FF6E, 2px 2px 5px #07A7FF6E;
+    transition: 0.2s ease-in-out; 
+}
+
+.card button div{
+    padding-top: 8px;
+}
+
+.card button div img:hover{
+    opacity: 0.8;
+    transition: 0.4s;
+    z-index: 333;
+    box-shadow: 1px 1px 1px #6F6F6F, 2px 2px 6px 1px #595959;
+}

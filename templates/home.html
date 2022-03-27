@@ -1,0 +1,75 @@
+{%extends "base.html" %}
+{%block content%}
+
+<style>
+
+
+    
+</style>
+
+
+<div class="topAnimes">
+    <h3>Trending Animes</h3>
+    <div class="cards">
+        
+        <div class="card">
+            <a href="#"><button>
+                <div>
+                    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx142329-Oa6NT07c5KOn.jpg">
+                </div>
+                <h4>Kimetsu no Yaiba: Yuukaku-hen</h4>
+            </button></a>
+        </div>
+
+    </div>
+</div><br>
+
+<div class="top100">
+    <h3>Top 100 Animes</h3>
+    <div class="cards">
+        <div class="card">
+            <a href="#"><button>
+                    <div>
+                        <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21827-10F6m50H4GJK.png">
+                    </div>
+                    <h4>Violet Evergarden</h4>
+                </button></a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const sresult = document.querySelector("#Sresult");
+    const query = `{{query}}`;
+    const base_url = "https://api.jikan.moe/v3";
+    console.log(query)
+    fetch(`${base_url}/search/anime?q=${query}`)
+        .then(res => res.json())
+        .then(data => sResult(data))
+        .catch(err => console.warn(err.message));
+
+function sResult(data){
+    let animArr = data["results"]
+    for(let i = 0;i<animArr.length;i++){
+        console.log(animArr[i]["title"],i);
+        sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"])
+    }
+}
+
+function template(title,url,imgUrl){
+    return `
+    <div class="card">
+            <a href="${url}"><button>
+                <div>
+                    <img src="${imgUrl}">
+                </div>
+                <h4>${title}</h4>
+            </button></a>
+        </div>
+    `
+}
+
+</script>
+
+{% endblock %}
