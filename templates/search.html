@@ -8,6 +8,27 @@
     box-shadow: 0.3px 0.3px 1px #6F6F6F, 0.2px 0.2px 1px  #595959;
 }
 
+#btn{
+    display: block;
+}
+
+#loadMore{
+    display: block;
+    margin: auto;
+    padding: 5px 13px;
+    font-size: 1rem;
+    background-color: #595959;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+}
+
+#loadMore:hover{
+    background-color: #313131;
+    box-shadow: 1px 1px 10px #31313175;
+    transition: 0.4s;
+}
+
 </style>
 
 <div class="topAnimes">
@@ -15,8 +36,13 @@
     <div class="cards" id="Sresult">
         
     </div>
-
+<br><br>
+    <div id="btn">
+        <button id="loadMore" onclick="loadAnime()">Load More</button>
+    </div>
 </div>
+
+<br><br>
 
 
 
@@ -36,11 +62,11 @@
     }
 
     function sResult(data){
-    let animArr = data["results"]
-    for(let i = 0;i<animArr.length;i++){
-        sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"])
-        last_page = data["last_page"]
-    }
+        let animArr = data["results"]
+        for(let i = 0;i<animArr.length;i++){
+            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"])
+        }
+        last_page = data["last_page"];
     }
 
     function template(title,url,imgUrl){
@@ -55,8 +81,18 @@
         </div>
     `
     }
-
+    sessionStorage.setItem("page", 2);
     search(base_url,1,query)
+
+    function loadAnime(){
+        page = sessionStorage.getItem("page");
+        search(base_url,page,query);
+        sessionStorage.removeItem('image');
+        sessionStorage.setItem("page",Number(page)+1);
+        if (Number(page) == last_page) {
+            document.querySelector("#loadMore").style.display = "none";
+        }
+    }
 
 </script>
 {% endblock %}
