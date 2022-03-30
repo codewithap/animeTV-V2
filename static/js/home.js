@@ -25,3 +25,34 @@ document.oncontextmenu = function(event) {
 window.ondragstart = function() { return false; } 
 
 
+let nightModeBtn = document.querySelector("#nightMode");
+let mode = localStorage.getItem("nightMode");
+
+if(mode == true){
+    dark()
+}
+else if(mode == false){
+    light()
+}
+
+
+function dark(){
+    document.querySelector("body").style.background = "#000";
+    document.querySelector("body").style.color = "#fff";
+}
+
+function light(){
+    document.querySelector("body").style.background = "#fff";
+    document.querySelector("body").style.color = "#000";
+}
+
+nightModeBtn.addEventListener("click",()=>{
+    if(mode == null || mode == false){
+        dark()
+        localStorage.setItem("nightMode",true)
+    }
+    else if(mode == true){
+        light()
+        localStorage.setItem("nightMode",false)
+    }
+});

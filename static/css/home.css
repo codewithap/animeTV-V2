@@ -285,3 +285,30 @@ body{
     z-index: 333;
     box-shadow: 1px 1px 1px #6F6F6F, 2px 2px 6px 1px #595959;
 }
+
+.card button div img{
+    transition: 0.4s;
+    z-index: 333;
+    box-shadow: 0.3px 0.3px 1px #6F6F6F, 0.2px 0.2px 1px  #595959;
+}
+
+#btn{
+    display: block;
+}
+
+#loadMore{
+    display: block;
+    margin: auto;
+    padding: 5px 13px;
+    font-size: 1rem;
+    background-color: #595959;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+}
+
+#loadMore:hover{
+    background-color: #313131;
+    box-shadow: 1px 1px 10px #31313175;
+    transition: 0.4s;
+}

@@ -2,32 +2,7 @@
 {%block content%}
 <style>
 
-.card button div img{
-    transition: 0.4s;
-    z-index: 333;
-    box-shadow: 0.3px 0.3px 1px #6F6F6F, 0.2px 0.2px 1px  #595959;
-}
 
-#btn{
-    display: block;
-}
-
-#loadMore{
-    display: block;
-    margin: auto;
-    padding: 5px 13px;
-    font-size: 1rem;
-    background-color: #595959;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-}
-
-#loadMore:hover{
-    background-color: #313131;
-    box-shadow: 1px 1px 10px #31313175;
-    transition: 0.4s;
-}
 
 </style>
 
@@ -51,10 +26,12 @@
     const sresult = document.querySelector("#Sresult");
     let query = `{{query}}`;
     const base_url = "https://api.jikan.moe/v3";
-    let last_page = ""
-
+    let last_page = "";
+    let loadMore = document.querySelector("#loadMore");
 
     function search(url,pageNumber,query) {
+        loadMore.innerHTML = "Loding...";
+        loadMore.disabled = true;
     fetch(`${url}/search/anime?q=${query}&page=${pageNumber}`)
         .then(res => res.json())
         .then(data => sResult(data))
@@ -64,9 +41,11 @@
     function sResult(data){
         let animArr = data["results"]
         for(let i = 0;i<animArr.length;i++){
-            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"])
+            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"]);
         }
         last_page = data["last_page"];
+        loadMore.innerHTML = "Load More";
+        loadMore.disabled = false;
     }
 
     function template(title,url,imgUrl){
