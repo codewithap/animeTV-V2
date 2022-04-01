@@ -14,7 +14,11 @@ def search():
     return render_template("search.html",query=query)
 
 
+@app.route("/anime",methods=["GET","POST"])
+def anime():
+    animeId = request.args.get("id")
 
+    return render_template("anime.html",animeId=animeId)
 
 
 

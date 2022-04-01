@@ -65,17 +65,17 @@
     function sResult(data){
         let animArr = data["results"]
         for(let i = 0;i<animArr.length;i++){
-            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"]);
+            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["mal_id"],animArr[i]["image_url"]);
         }
         last_page = data["last_page"];
         loadMore.innerHTML = "Load More";
         loadMore.disabled = false;
     }
 
-    function template(title,url,imgUrl){
+    function template(title,id,imgUrl){
     return `
     <div class="card">
-            <a href="${url}"><button>
+            <a href="/anime?id=${id}"><button>
                 <div>
                     <img loading="lazy" src="${imgUrl}">
                 </div>
