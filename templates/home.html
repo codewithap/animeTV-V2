@@ -10,36 +10,7 @@
     margin: 0 0.2rem;
 } */
 
-.rank{
-    display: block;
-    position: relative;
-    font-weight: bold;
-    font-size: 15px;
-    color: #fff;
-    z-index: 1;
-    background-color: #333;
-    border-radius: 8px 0 0 0;
-    clip-path: polygon(90% 0, 0 0, 0 90%);
-    display: flex;
-    justify-content: start;
-    padding: 2px 5px;
-}
 
-.topAnimes .cards .card div{
-    border-radius: 8px;
-    box-shadow: 0 0 0 0.3px #333,
-            inset 0 0 0 1px #333;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 0;
-}
-
-.topAnimes .cards .card div:hover{
-    opacity: 0.8;
-    transition: 0.4s;
-    z-index: 333;
-    box-shadow: 1px 1px 1px #6F6F6F, 2px 2px 6px 1px #595959,inset 0 0 0 1px #333;
-}
 
 </style>
 
@@ -71,16 +42,16 @@
     function sResult(data){
         let animArr = data["top"]
         for(let i = 0;i<animArr.length;i++){
-            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["url"],animArr[i]["image_url"],animArr[i]["rank"])
+            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["mal_id"],animArr[i]["image_url"],animArr[i]["rank"])
         }
     }
 
-    function template(title,url,imgUrl,rank){
+    function template(title,id,imgUrl,rank){
         let length = (String(rank).length);
     return `
     <div class="card">
-            <a href="${url}"><button>
-                <div style="background-image: url('${imgUrl}');height:14rem;">
+            <a href="/anime?id=${id}"><button>
+                <div style="background-image: url('${imgUrl}');height:16rem;width: 11rem">
                     <span class="rank" style="width: ${length+5}ch;height: ${length+4}ch">#${rank}</span>
                     
                 </div>
@@ -93,7 +64,6 @@
     let pageNum = 3
     for (let index = 1; index < pageNum+1; index++) {
         search(base_url+`/${index}`)
-        console.log(index)
     }
     
 

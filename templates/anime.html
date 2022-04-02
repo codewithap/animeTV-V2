@@ -1,7 +1,44 @@
 {%extends "base.html" %}
 {%block content%}
 
-{{ animeId }}
+<style>
+    #searchForm{
+        display: none;
+    }
+</style>
+<main>
 
+<div class="info">
+    <div class="img">
+
+    </div>
+    <div class="desc">
+        
+    </div>
+
+</div>
+
+
+
+
+</main>
+<script>
+
+    const base_url = "https://api.jikan.moe/v3/anime/{{animeId}}";
+    function search(url) {
+        fetch(`${url}`)
+            .then(res => res.json())
+            .then(data => sResult(data))
+            .catch(err => console.warn(err.message));
+    }
+
+    function sResult(data){
+        console.log(data);
+    }
+
+    search(base_url)
+
+
+</script>
 
 {% endblock %}
