@@ -10,7 +10,21 @@
     margin: 0 0.2rem;
 } */
 
+.topAnimes .cards .card div{
+    border-radius: 8px;
+    box-shadow: 0 0 0 0.3px #333,
+            inset 0 0 0 1px #333;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 0;
+}
 
+.topAnimes .cards .card div:hover{
+    opacity: 0.8;
+    transition: 0.4s;
+    z-index: 333;
+    box-shadow: 1px 1px 1px #6F6F6F, 2px 2px 6px 1px #595959,inset 0 0 0 1px #333;
+}
 
 </style>
 
@@ -31,6 +45,14 @@
     
     const sresult = document.querySelector("#topAnimes");
     const base_url = "https://api.jikan.moe/v3/top/anime";
+
+
+    function sleep(sleepDuration){
+    var now = new Date().getTime();
+    while(new Date().getTime() < now + sleepDuration){ 
+        /* Do nothing */ 
+    }
+}
 
     function search(url) {
         fetch(`${url}`)
@@ -61,9 +83,11 @@
     `;
     }
 
-    let pageNum = 3
+    let pageNum = 2
     for (let index = 1; index < pageNum+1; index++) {
-        search(base_url+`/${index}`)
+        
+        search(base_url+`/${index}`);
+        sleep(1500)
     }
     
 

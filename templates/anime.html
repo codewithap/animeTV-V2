@@ -2,18 +2,48 @@
 {%block content%}
 
 <style>
+    body{
+        background-color: rgb(212, 223, 234);
+    }
+
     #searchForm{
         display: none;
+    }
+
+    .info{
+        display: flex;
+        padding: 5px 10px;
+    }
+
+    #img img {
+        border-radius: 8px;
+        border: 0.4px solid rgb(29, 29, 29);
+    }
+
+    #img{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 13crem;
+        margin: 4px 7px;
+        
+        
     }
 </style>
 <main>
 
 <div class="info">
-    <div class="img">
 
-    </div>
-    <div class="desc">
+    <div class="img" id="img">
+        <img src="" alt="">
         
+    </div>
+
+    <div class="main">
+        <div class="desc" id="desc">
+            <span style="font-size: 1.3rem"></span><br>
+            
+        </div>
     </div>
 
 </div>
@@ -25,6 +55,10 @@
 <script>
 
     const base_url = "https://api.jikan.moe/v3/anime/{{animeId}}";
+    let img = document.querySelector("#img img");
+    let title = document.querySelector("#desc span");
+    let desc = document.querySelector("#desc");
+
     function search(url) {
         fetch(`${url}`)
             .then(res => res.json())
@@ -34,6 +68,9 @@
 
     function sResult(data){
         console.log(data);
+        img.src = data["image_url"];
+        title.innerHTML = data["title"];
+        desc.innerHTML += data["synopsis"]
     }
 
     search(base_url)
