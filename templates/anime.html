@@ -2,8 +2,12 @@
 {%block content%}
 
 <style>
-    body{
-        background-color: rgb(212, 223, 234);
+    #body{
+        background-color: rgb(221, 230, 237);
+    }
+
+    .nav-navbar{
+        background-color: rgb(221, 230, 237);
     }
 
     #searchForm{
@@ -13,6 +17,18 @@
     .info{
         display: flex;
         padding: 5px 10px;
+        background-color: #fff;
+        width: 95%;
+        border-radius: 8px;
+        background-size: cover;
+        background-position: center;
+        filter: blur(10px);
+        opacity: .35;
+    }
+
+    #main{
+        display: flex;
+        justify-content: center;
     }
 
     #img img {
@@ -29,20 +45,28 @@
         
         
     }
+
+    #desc span{
+        color: rgb(32, 33, 37);
+        width: 100%;
+        font-weight: bolder;
+    }
 </style>
-<main>
+<main id="main">
 
 <div class="info">
 
-    <div class="img" id="img">
-        <img src="" alt="">
-        
-    </div>
-
-    <div class="main">
-        <div class="desc" id="desc">
-            <span style="font-size: 1.3rem"></span><br>
+    <div class="iuehfuyr">
+        <div class="img" id="img">
+            <img src="" alt="">
             
+        </div>
+    
+        <div class="main">
+            <div class="desc" id="desc">
+                <span style="font-size: 1.3rem"></span><br>
+                
+            </div>
         </div>
     </div>
 
@@ -58,6 +82,8 @@
     let img = document.querySelector("#img img");
     let title = document.querySelector("#desc span");
     let desc = document.querySelector("#desc");
+    let info = document.querySelector(".info");
+
 
     function search(url) {
         fetch(`${url}`)
@@ -71,6 +97,8 @@
         img.src = data["image_url"];
         title.innerHTML = data["title"];
         desc.innerHTML += data["synopsis"]
+        info.style.backgroundImage = `url('${data["image_url"]}')`;
+        
     }
 
     search(base_url)
