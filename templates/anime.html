@@ -22,12 +22,14 @@
         border-radius: 8px;
         background-size: cover;
         background-position: center;
-        box-shadow: 5px 5px 15px solid rgba(20, 18, 18, 0.7);
+        box-shadow: 1px 0px 10px rgba(20, 18, 18, 0.3);
     }
 
     #main{
         display: flex;
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     #img img {
@@ -54,7 +56,7 @@
         flex-wrap: nowrap;
     }
 
-    #desc span{
+    #desc #title{
         color: rgba(0, 53, 212, 0.8);
         width: 100%;
         font-weight: bolder;
@@ -74,7 +76,7 @@
         justify-content: center;
         flex-wrap: wrap;
     }
-    #desc span{
+    #desc #title{
         margin-top: 20px;
         display: block;
         text-align: center;
@@ -106,6 +108,35 @@
     cursor: pointer;
 }
 
+.iframe{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+iframe{
+    border-radius: 5px;
+}
+
+.xjjgxxfh{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    word-wrap: break-word;width: 130px;
+    border-right: 0.4px solid rgba(88, 88, 88, 0.821);
+    padding-right: 4px;
+}
+
+.cards p{
+    text-align: center;
+}
+
 </style>
 <main id="main">
 
@@ -119,15 +150,33 @@
     
         <div class="main">
             <div class="desc" id="desc">
-                <span style="font-size: 1.3rem"></span><br>
+                <span id="title" style="font-size: 1.3rem"></span><br>
                 
             </div>
         </div>
     </div>
 
 </div>
+<br>
 
 
+<div class="info xjjgxxfh">
+    <div class="cards">
+        <h4>Title</h4>
+        <p>Lorem ipsum dolor sit.</p>
+    </div>
+</div>
+    
+    
+<br>
+
+<div class="info" style="flex-direction: column;">
+
+    <h2 style="text-align: center;display: block;">Trailer</h2>
+    <div class="iframe">
+        <iframe id="trailer" style="width: 450px; height: 255px;" frameborder="0"></iframe>
+    </div>
+</div>
 
 
 </main>
@@ -138,6 +187,7 @@
     let title = document.querySelector("#desc span");
     let desc = document.querySelector("#desc");
     let info = document.querySelector(".info");
+    let trailer = document.querySelector("#trailer");
 
 
     function search(url) {
@@ -151,9 +201,11 @@
         console.log(data);
         img.src = data["image_url"];
         title.innerHTML = data["title"];
-        desc.innerHTML += data["synopsis"]
+        desc.innerHTML += `
+        ${data["synopsis"].slice(0,100)}<span id="dots">.....</span><span style="display: none" id="more">${data["synopsis"].slice(100,-1)}</span> &nbsp;&nbsp;&nbsp;<a style="color: blue" href="#" onclick="readMoreLess()" id="myBtn">Read More</a>
+        `;
         // info.style.backgroundImage = `url('${data["image_url"]}')`;
-        
+        trailer.src = data["trailer_url"]
     }
 
     search(base_url)
