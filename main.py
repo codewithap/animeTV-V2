@@ -1,4 +1,5 @@
 from flask import Flask,render_template,request
+from scrappers.gogoanime import *
 
 app = Flask(__name__)
 
@@ -19,6 +20,8 @@ def anime():
     animeId = request.args.get("id")
 
     return render_template("anime.html",animeId=animeId)
+
+
 
 
 
