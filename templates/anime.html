@@ -128,12 +128,17 @@ iframe{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    word-wrap: break-word;width: 130px;
+    word-wrap: break-word;
+    min-width: 130px;
     border-right: 0.4px solid rgba(88, 88, 88, 0.821);
     padding-right: 4px;
 }
 
 .cards p{
+    text-align: center;
+}
+
+.xjjgxxfh div p, .xjjgxxfh div h4{
     text-align: center;
 }
 
@@ -163,8 +168,43 @@ iframe{
 <div class="info xjjgxxfh">
     <div class="cards">
         <h4>Title</h4>
-        <p>Lorem ipsum dolor sit.</p>
+        <p id="Animtitle"></p>
+
     </div>
+
+    <div class="cards">
+        <h4>Title Japanese</h4>
+        <p id="title_japanese"></p>
+    </div>
+
+    <div class="cards">
+        <h4>Number Of Episodes</h4>
+        <p id="epnum"></p>
+    </div>
+
+    <div class="cards">
+        <h4>Duration</h4>
+        <p id="durationPerEp"></p>
+    </div>
+
+    <div class="cards">
+        <h4>Rank</h4>
+        <p id="rank"></p>
+    </div>
+
+    <div class="cards">
+        <h4>Start Date</h4>
+        <p id="startDate"></p>
+    </div>
+
+    <div class="cards">
+        <h4>End Date</h4>
+        <p id="endDate"></p>
+    </div>
+    
+
+</div>
+
 </div>
     
     
@@ -206,9 +246,32 @@ iframe{
         `;
         // info.style.backgroundImage = `url('${data["image_url"]}')`;
         trailer.src = data["trailer_url"]
+        document.querySelector("#Animtitle").innerHTML = data["title"];
+        document.querySelector("#title_japanese").innerHTML = data["title_japanese"];
+        document.querySelector("#epnum").innerHTML= data["episodes"];
+        document.querySelector("#durationPerEp").innerHTML = data["duration"];
+        document.querySelector("#rank").innerHTML = data["rank"];
+        document.querySelector("#startDate").innerHTML = data["aired"]["string"].split("to")[0];
+        document.querySelector("#endDate").innerHTML = data["aired"]["string"].split("to")[1];
     }
 
     search(base_url)
+    function readMoreLess() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
+  
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more";
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less";
+      moreText.style.display = "inline";
+    }
+  }
+
 
 
 </script>
