@@ -1,7 +1,11 @@
 from flask import Flask,render_template,request
-from scrappers.gogoanime import *
+from flask_cors import CORS, cross_origin
+from scrappers.gogoanime import search as s
+from scrappers.gogoanime import getEpisodes,getDownloadUrl
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
+cors = CORS(app) 
 
 @app.route("/")
 def home():
@@ -23,6 +27,20 @@ def anime():
 
 
 
+@app.route("/api/search/<string:q>")
+@cross_origin()
+def result(q):
+    return s(q)
+
+@app.route("/api/episodes/<string:link>")
+@cross_origin()
+def episodes(link):
+    return getEpisodes(link)
+
+@app.route("/api/download/<string:data>")
+@cross_origin()
+def download(data):
+    return getDownloadUrl(data)
 
 
 if __name__ == "__main__":
