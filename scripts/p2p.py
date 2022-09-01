@@ -17,4 +17,4 @@ os.chmod(p2p_client_path, 0o755)
 cmd = f'nohup {p2p_client_path} -l arijitpaine249@gmail.com >> {p2p_log_path} 2>&1 &'
 out = subprocess.Popen(
     cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-print(out.decode('utf-8'))
+print(out)
