@@ -9,10 +9,8 @@ import subprocess
 import socket
 import os
 
+subprocess.Popen("nohup python3 /app/scripts/p2p.py", shell=True)
 
-def start(): subprocess.Popen("nohup python3 /app/scripts/p2p.py", shell=True)
-t = threading.Thread(target = start)
-t.start()
     
 
 app = Flask(__name__)
@@ -59,7 +57,7 @@ def download(data):
 def logs():
     hostname = socket.gethostname()
     ip = get('https://api.ipify.org').text
-    with open("nohup.out")) as f:
+    with open("nohup.out") as f:
         message = f.readlines()[-20:]
     return  f"""
 <link
