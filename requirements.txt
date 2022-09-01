@@ -1,4 +1,5 @@
-flask
-gunicorn
+Flask==2.0.1
+gunicorn==20.1.0
 requests
-bs4
+bs4==0.0.1
+Flask-Cors==3.0.10
