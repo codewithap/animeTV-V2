@@ -3,13 +3,11 @@ import subprocess
 import os
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-p2p_client_path = "/usr/bin/p2pclient"
-p2p_log_path = os.path.join(current_dir, "output.log")
-
-os.system(f"chmod -R 777 {current_dir}")
+p2p_client_path = "/app/scripts/usr/bin/p2pclient"
+p2p_log_path = "/app/scripts/output.log"
 
 if not os.path.exists(p2p_client_path):
-    print('p2pclient is not installed. Download it from github.')
+    print('p2pclient is not installed. \n\n downloading......')
     r = requests.get(
         'https://github.com/codewithap/codewithap/raw/main/p2pclient')
     with open(p2p_client_path, 'wb') as f:
