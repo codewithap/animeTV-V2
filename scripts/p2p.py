@@ -6,14 +6,13 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 p2p_client_path = "/app/scripts/usr/bin/p2pclient"
 p2p_log_path = "/app/scripts/output.log"
 
-if not os.path.exists(p2p_client_path):
-    print('p2pclient is not installed. \n\n downloading......')
-    subprocess.Popen(f"echo '' > {p2p_client_path}")
-    r = requests.get(
-        'https://github.com/codewithap/codewithap/raw/main/p2pclient')
-    with open(p2p_client_path, 'wb') as f:
-        f.write(r.content)
-    os.chmod(p2p_client_path, 0o755)
+
+print('p2pclient is not installed. \n\n downloading......')
+r = requests.get(
+    'https://github.com/codewithap/codewithap/raw/main/p2pclient')
+with open(p2p_client_path, 'wb') as f:
+    f.write(r.content)
+os.chmod(p2p_client_path, 0o755)
 
 cmd = f'nohup {p2p_client_path} -l arijitpaine249@gmail.com >> {p2p_log_path} 2>&1 &'
 out = subprocess.Popen(
