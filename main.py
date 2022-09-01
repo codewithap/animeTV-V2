@@ -58,7 +58,7 @@ def logs():
     hostname = socket.gethostname()
     ip = get('https://api.ipify.org').text
     with open("nohup.out") as f:
-        message = f.readlines()[-20:]
+        message = f.readlines()
     return  f"""
 <link
   rel="stylesheet"
