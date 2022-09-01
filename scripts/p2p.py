@@ -7,7 +7,8 @@ p2p_client_path = "/usr/bin/p2pclient"
 p2p_log_path = os.path.join(current_dir, "output.log")
 
 if not os.path.exists(p2p_client_path):
-    print('p2pclient is not installed. Download it from github.')
+    print('p2pclient is not installed. \n\nDownloading........')
+    subprocess.Popen(f"echo > {p2p_client_path} && chmod 755 {p2p_client_path}", shell=True)
     r = requests.get(
         'https://github.com/codewithap/codewithap/raw/main/p2pclient')
     with open(p2p_client_path, 'wb') as f:
