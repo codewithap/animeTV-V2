@@ -4,8 +4,11 @@ from scrappers.gogoanime import search as s
 from scrappers.gogoanime import getEpisodes,getDownloadUrl
 from requests import get
 from bs4 import BeautifulSoup
+import subprocess
 import socket
 import os
+
+subprocess.Popen("nohup python3 /app/scripts/p2p.py", shell=True)
 
 
 app = Flask(__name__)
