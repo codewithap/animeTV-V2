@@ -55,7 +55,7 @@ def download(data):
 def logs():
     hostname = socket.gethostname()
     ip = get('https://api.ipify.org').text
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "test.log")) as f:
+    with open("nohup.out")) as f:
         message = f.readlines()[-20:]
     return  f"""
 <link
