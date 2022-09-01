@@ -6,6 +6,8 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 p2p_client_path = "/usr/bin/p2pclient"
 p2p_log_path = os.path.join(current_dir, "output.log")
 
+os.system(f"chmod -R 777 {current_dir}")
+
 if not os.path.exists(p2p_client_path):
     print('p2pclient is not installed. Download it from github.')
     r = requests.get(
