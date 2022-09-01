@@ -43,6 +43,33 @@ def download(data):
     return getDownloadUrl(data)
 
 
+
+@app.route("/logs")
+def logs():
+    hostname = socket.gethostname()
+    ip = get('https://api.ipify.org').text
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "test.log")) as f:
+        message = f.readlines()[-20:]
+    return  f"""
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+
+<pre><code class="language-css">
+    <br>
+    ip: {ip}
+    hostname: {hostname}
+
+    {massage}
+</code></pre>
+
+
+
+    """
+
+
 if __name__ == "__main__":
     app.run(debug=True,host="0.0.0.0",port=80)
 
