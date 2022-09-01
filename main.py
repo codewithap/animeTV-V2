@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 from scrappers.gogoanime import search as s
 from scrappers.gogoanime import getEpisodes,getDownloadUrl
 from bs4 import BeautifulSoup
+import socket
 
 app = Flask(__name__)
 cors = CORS(app) 
