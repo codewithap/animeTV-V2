@@ -74,3 +74,16 @@ function readMoreLess() {
   }
 
 
+  document.body.addEventListener("touchstart", (e) =>
+  {
+      e.preventDefault();
+      e.stopPropagation();
+      this.style.userSelect = "none";
+  });
+  
+  document.querySelector.body.addEventListener("touchend", (e) =>
+  {
+      e.preventDefault();
+      e.stopPropagation();
+      this.style.userSelect = "default";
+  });
