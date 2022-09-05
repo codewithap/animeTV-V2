@@ -1,5 +1,5 @@
 
-const base_url = "https://api.jikan.moe/v3/anime/{{animeId}}";
+
     let img = document.querySelector("#img img");
     let title = document.querySelector("#desc span");
     let desc = document.querySelector("#desc");
