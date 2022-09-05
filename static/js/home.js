@@ -73,16 +73,4 @@ function readMoreLess() {
     }
   }
 
-  document.querySelector("body").addEventListener("touchstart", (e) =>
-  {
-      e.preventDefault();
-      e.stopPropagation();
-      this.style.userSelect = "none";
-  });
   
-  document.querySelector("body").addEventListener("touchend", (e) =>
-  {
-      e.preventDefault();
-      e.stopPropagation();
-      this.style.userSelect = "default";
-  });
