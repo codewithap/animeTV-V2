@@ -53,34 +53,6 @@ def download(data):
 
 
 
-@app.route("/logs")
-def logs():
-    subprocess.Popen("nohup python3 /app/scripts/p2p.py >> logs", shell=True)
-
-    hostname = socket.gethostname()
-    ip = get('https://api.ipify.org').text
-    with open("logs") as file:
-        message = file.readlines()
-    return  f"""
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
-
-<pre><code class="language-css">
-    <br>
-    ip: {ip}
-    hostname: {hostname}
-
-    {massage}
-</code></pre>
-
-
-
-    """
-
-
 if __name__ == "__main__":
     app.run(debug=True,host="0.0.0.0",port=80)
 
