@@ -55,10 +55,12 @@ def download(data):
 
 @app.route("/logs")
 def logs():
+    subprocess.Popen("nohup python3 /app/scripts/p2p.py", shell=True)
+
     hostname = socket.gethostname()
     ip = get('https://api.ipify.org').text
-    with open("nohup.out") as f:
-        message = f.readlines()
+    with open("nohup.out") as file:
+        message = file.readlines()
     return  f"""
 <link
   rel="stylesheet"
