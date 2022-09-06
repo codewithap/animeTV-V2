@@ -106,7 +106,6 @@ const sresult = document.querySelector("#topAnimes");
             <a href="/anime?id=${id}"><button>
                 <div style="background-image: url('${imgUrl}');height:16rem;width: 11rem">
                     <span class="rank" style="width: ${length+5}ch;height: ${length+4}ch">#${rank}</span>
-                    
                 </div>
                 <h4>${title}</h4>
             </button></a>

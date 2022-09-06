@@ -4,10 +4,12 @@ let desc = document.querySelector("#desc");
 let info = document.querySelector(".info");
 let trailer = document.querySelector("#trailer");
 let d = "";
-// fetch(`${url}`).then(res => res.json()).then(data =>).catch(err => console.warn(err.message))
    
 function search(url) {
-    fetch(`${url}`).then(res => res.json()).then(data => sResult(data)).catch(err => console.warn(err.message));
+    fetch(`${url}`)
+    .then(res => res.json())
+    .then(data => sResult(data))
+    .catch(err => console.warn(err.message));
 }
 
 function sResult(data) {
@@ -48,6 +50,4 @@ function readMoreLess() {
     }
 }
 
-
-//   console.log(fetch(`${window.location.origin}/sresult/${d["title"]}`))
 console.log(d);
