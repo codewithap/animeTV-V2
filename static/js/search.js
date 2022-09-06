@@ -1,5 +1,5 @@
     const sresult = document.querySelector("#Sresult");
-    let query = `{{query}}`;
+   
     const base_url = "https://api.jikan.moe/v3";
     let last_page = "";
     let loadMore = document.querySelector("#loadMore");
