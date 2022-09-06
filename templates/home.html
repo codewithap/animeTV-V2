@@ -43,54 +43,7 @@
 <script>
 
     
-    const sresult = document.querySelector("#topAnimes");
-    const base_url = "https://api.jikan.moe/v3/top/anime";
-
-
-    function sleep(sleepDuration){
-    var now = new Date().getTime();
-    while(new Date().getTime() < now + sleepDuration){ 
-        /* Do nothing */ 
-    }
-}
-
-    function search(url) {
-        fetch(`${url}`)
-            .then(res => res.json())
-            .then(data => sResult(data))
-            .catch(err => console.warn(err.message));
-    }
-
-    function sResult(data){
-        let animArr = data["top"]
-        for(let i = 0;i<animArr.length;i++){
-            sresult.innerHTML += template(animArr[i]["title"],animArr[i]["mal_id"],animArr[i]["image_url"],animArr[i]["rank"])
-        }
-    }
-
-    function template(title,id,imgUrl,rank){
-        let length = (String(rank).length);
-    return `
-    <div class="card">
-            <a href="/anime?id=${id}"><button>
-                <div style="background-image: url('${imgUrl}');height:16rem;width: 11rem">
-                    <span class="rank" style="width: ${length+5}ch;height: ${length+4}ch">#${rank}</span>
-                    
-                </div>
-                <h4>${title}</h4>
-            </button></a>
-        </div>
-    `;
-    }
-
-    let pageNum = 2
-    for (let index = 1; index < pageNum+1; index++) {
-        
-        search(base_url+`/${index}`);
-        sleep(1500)
-    }
     
-
 </script>
 
 {% endblock %}
