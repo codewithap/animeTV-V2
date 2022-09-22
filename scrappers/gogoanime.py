@@ -26,7 +26,7 @@ def getEpisodes(url):
     links = epis.select("a")
     for link in links:
         link_arr.append(f'{link["href"].replace(" /","")}')
-    return {"episodes": link_arr[::-1]}
+    return link_arr[::-1]
 
 
 def getDownloadUrl(epUrl):
