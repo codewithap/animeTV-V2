@@ -41,8 +41,9 @@ def episodes(name):
         sname = sname.replace(i,"")
     try:
         ep = getEpisodes(s(sname))
-    except: 
-        return "No episodes found"
+        return render_template("episodes.html",ep =ep ,s =sname)
+    except:
+        return "No episodes found on server"
 
 
 #@app.route("/anime/episodes/<string:link>")
