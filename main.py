@@ -40,13 +40,13 @@ def episodes(name):
     for i in uoChaecters: 
         sname = sname.replace(i,"")
     ep = getEpisodes(s(sname))
-   # if len(ep) == 0:
-        #return "No episodes found on server"
-  #  else:
-    return render_template("episodes.html",ep =ep ,s =sname)
+    if len(ep) == 0:
+        return "No episodes found on server"
+    else:
+        return render_template("episodes.html",ep =ep ,s =sname)
 
 
-@app.route("/anime/episodes/<string:link>")
+#@app.route("/anime/episodes/<string:link>")
 
 
 
