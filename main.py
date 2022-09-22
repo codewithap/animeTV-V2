@@ -35,7 +35,9 @@ def anime():
 
 @app.route("/anime/<string:name>")
 def episodes(name):
-    return render_template("episodes.html")
+    ep = s(name)
+    
+    return render_template("episodes.html",ep =ep)
 
 
 

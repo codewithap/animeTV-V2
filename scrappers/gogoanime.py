@@ -20,7 +20,7 @@ def search(url):
     }
 
 def getEpisodes(url):
-    r= requests.get("https://www1.gogoanime.ee/search.html?keyword=Steins;Gate%"+url)
+    r= requests.get("https://www1.gogoanime.ee/category/"+url)
     html = BeautifulSoup(r.content)
     id = html.select("#movie_id")[0]["value"]
     name = html.select("#alias_anime")[0]["value"]
