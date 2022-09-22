@@ -36,7 +36,7 @@ def anime():
 @app.route("/anime/<string:name>")
 def episodes(name):
     sname = name
-    uoChaecters = ["/","°","!","?",'"',"=","*","'","_","#","(",")"]
+    uoChaecters = ["(",")"]
     for i in uoChaecters: 
         sname = sname.replace(i,"")
     ep = getEpisodes(s(sname))
