@@ -38,7 +38,7 @@ def episodes(name):
     sname = name
     uoChaecters = [":","/","°","!","?",'"',"=","(",")","*","'","_","-","#"]
     for i in uoChaecters: 
-        sname = name.replace(i,"")
+        sname = sname.replace(i,"")
     ep = getEpisodes(s(sname))
     
     
