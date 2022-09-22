@@ -5,7 +5,7 @@
     <meta name="theme-color" content="rgba(0, 53, 212, 0.8)" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
@@ -65,7 +65,7 @@
     </svg> Donations</button></a>
     
 </div>
-<script src="static/js/home.js"></script>
+<script src="{{ url_for('static', filename='js/home.js')}}"></script>
 <script>
    let button = document.querySelector('.nav-bar');
    let nav = document.querySelector('.nav');
