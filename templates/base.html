@@ -19,7 +19,7 @@
 <main id="body">
     <nav class="nav-navbar">
         <div class="nav-img">
-            <img src="static/logo.png">
+            <img src="{{ url_for('static',filename='logo.png') }}">
         </div>
         <h2>AnimeTV</h2>
         <div class="nav-bar">
@@ -45,7 +45,7 @@
 <div class="nav">
     <div class="info">
         <div class="img">
-            <img src="static/logo.png" alt="logo.png">
+            <img src="{{ url_for('static', filename='logo.png')}}" alt="logo.png">
         </div>
         <div class="wInfo">
             <h2>AnimeTv</h2>
