@@ -36,20 +36,7 @@ def anime():
 
 
 
-@app.route("/api/search/<string:q>")
-@cross_origin()
-def result(q):
-    return s(q)
 
-@app.route("/api/episodes/<string:link>")
-@cross_origin()
-def episodes(link):
-    return getEpisodes(link)
-
-@app.route("/api/download/<string:data>")
-@cross_origin()
-def download(data):
-    return getDownloadUrl(data)
 
 
 

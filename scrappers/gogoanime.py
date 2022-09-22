@@ -6,7 +6,7 @@ animeName = "naruto"
 base_url = ""
 
 def search(url):
-    r = requests.get("https://gogoanime.fi//search.html?keyword="+url)
+    r = requests.get("https://www1.gogoanime.ee/search.html?keyword="+url)
     html = BeautifulSoup(r.content, 'html.parser')
     result = html.select(".items li a")
     links=[]
