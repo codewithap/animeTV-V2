@@ -38,7 +38,7 @@ def episodes(name):
     ep = getEpisodes(s(name))
     
     
-    return render_template("episodes.html",ep =ep)
+    return render_template("episodes.html",ep =ep ,s = s(name))
 
 
 
