@@ -24,7 +24,7 @@ function sResult(data) {
     d += data
     trailer.src = data["trailer_url"]
     document.querySelector("#Animtitle").innerHTML = data["title"];
-    dBtn.innerHTML = data["title"];
+    dBtn.value = data["title"];
     document.querySelector("#title_japanese").innerHTML = data["title_japanese"];
     document.querySelector("#epnum").innerHTML = data["episodes"];
     document.querySelector("#durationPerEp").innerHTML = data["duration"];
