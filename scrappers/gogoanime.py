@@ -10,9 +10,7 @@ def search(url):
     html = BeautifulSoup(r.content, 'html.parser')
     result = html.select(".items li a")
     link = f"{result[0]['href'].replace('/category/','')}"
-    uoChaecters = [":","/","°","!","?",'"',"=","(",")","*","'","_","-","#"]
-    for i in uoChaecters: 
-        link.replace(i,"")
+    
     return link
 
 def getEpisodes(url):

@@ -35,10 +35,14 @@ def anime():
 
 @app.route("/anime/<string:name>")
 def episodes(name):
-    ep = getEpisodes(s(name))
+    sname = ""
+    uoChaecters = [":","/","°","!","?",'"',"=","(",")","*","'","_","-","#"]
+    for i in uoChaecters: 
+        sname = name.replace(i,"")
+    ep = getEpisodes(s(sname))
     
     
-    return render_template("episodes.html",ep =ep ,s = s(name))
+    return render_template("episodes.html",ep =ep ,s =name)
 
 
 
