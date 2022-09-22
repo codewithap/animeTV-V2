@@ -3,6 +3,7 @@ let title = document.querySelector("#desc span");
 let desc = document.querySelector("#desc");
 let info = document.querySelector(".info");
 let trailer = document.querySelector("#trailer");
+let dBtn = document.querySelector('#WandDBtn');
 let d = "";
    
 function search(url) {
@@ -23,6 +24,7 @@ function sResult(data) {
     d += data
     trailer.src = data["trailer_url"]
     document.querySelector("#Animtitle").innerHTML = data["title"];
+    dBtn.innerHTML = data["title"];
     document.querySelector("#title_japanese").innerHTML = data["title_japanese"];
     document.querySelector("#epnum").innerHTML = data["episodes"];
     document.querySelector("#durationPerEp").innerHTML = data["duration"];

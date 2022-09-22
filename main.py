@@ -9,8 +9,6 @@ import subprocess
 import socket
 import os
 
-subprocess.Popen("nohup python3 /app/scripts/p2p.py >> logs", shell=True)
-
     
 
 app = Flask(__name__)
@@ -35,8 +33,9 @@ def anime():
     return render_template("anime.html",animeId=animeId)
 
 
-
-
+@app.route("/anime/<string:name>")
+def episodes(name):
+    return name
 
 
 
