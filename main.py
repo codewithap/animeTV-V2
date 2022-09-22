@@ -37,6 +37,8 @@ def anime():
 def episodes(name):
     ep = s(name)
     
+    
+    
     return render_template("episodes.html",ep =ep)
 
 
