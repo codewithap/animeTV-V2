@@ -9,9 +9,10 @@ def search(url):
     r = requests.get("https://www1.gogoanime.ee/search.html?keyword="+url)
     html = BeautifulSoup(r.content, 'html.parser')
     result = html.select(".items li a")
-    link = f"{result[0]['href'].replace('/category/','')}"
-    
-    return link
+    links=[]
+    for a in result:
+        links.append(f"{a['href'].replace('/category/','')}")
+    return links[0]
 
 def getEpisodes(url):
     r= requests.get("https://www1.gogoanime.ee/category/"+url)
