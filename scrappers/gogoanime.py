@@ -1,9 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-animeName = "naruto"
-
-base_url = ""
 
 def search(url):
     r = requests.get("https://www1.gogoanime.ee/search.html?keyword="+url)
@@ -28,13 +25,11 @@ def getEpisodes(url):
         link_arr.append(f'{link["href"].replace(" /","")}')
     return link_arr[::-1]
 
-
 def getDownloadUrl(epUrl):
     r = requests.get("https://www1.gogoanime.ee/"+epUrl)
     html = BeautifulSoup(r.content,"html.parser")
     dUrl = html.select(".streamsb a")[0]["data-video"]
     return f"{dUrl.replace('https://sbplay2.xyz/e/','https://sbplay2.xyz/d/')}"
-
 
 if __name__ == "__main__":
     None

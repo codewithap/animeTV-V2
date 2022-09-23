@@ -46,9 +46,10 @@ def episodes(name):
         return "No episodes found on server"
 
 
-#@app.route("/anime/episodes/<string:link>")
-
-
+@app.route("/anime/episodes/<string:link>")
+def download(link):
+    durl = getDownloadUrl(link)
+    return durl
 
 
 
