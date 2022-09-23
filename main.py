@@ -41,7 +41,8 @@ def episodes(name):
         sname = sname.replace(i,"")
     try:
         ep = getEpisodes(s(sname))
-        return render_template("episodes.html",ep =ep ,s =sname)
+        return f"{ep}"
+        #return render_template("episodes.html",ep =ep ,s =sname)
     except:
         return "No episodes found on server"
 
