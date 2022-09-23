@@ -33,7 +33,7 @@ def getDownloadUrl(epUrl):
     html2 = BeautifulSoup(download.content,"html.parser")
     downloadUrl = html.select(".container ") #[0]["onclick"]
     size = html.select(".container a") #[0].get_text()
-    return f"{html} \n {size}"
+    return f"{html2} \n {size}"
 
 
 
