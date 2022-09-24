@@ -34,7 +34,7 @@ def getDownloadUrl(epUrl):
     downloadUrl = html2.select(".contentbox a")[0]["onclick"]
     size = html2.select(".contentbox a")[0].get_text()
     params = ((downloadUrl.replace("download_video('","")).replace("')","")).split("','")
-    directDlink = f"https://streamsss.net/dl?op=download_orig$id={params[0]}&mode={params[1]}&hash={params[2]}"
+    directDlink = f"https://streamsss.net/dl?op=download_orig&id={params[0]}&mode={params[1]}&hash={params[2]}"
     return f"{directDlink} \n {size}"
 
 
