@@ -33,12 +33,16 @@ def getDownloadUrl(epUrl):
     html2 = BeautifulSoup(download.content,"html.parser")
     downloadUrl = html2.select(".contentbox a")[0]["onclick"]
     size = html2.select(".contentbox a")[0].get_text()
-    return f"{downloadUrl} \n {size}"
+    params = ((downloadUrl.replace("download_video('","")).replace("')")).split("','")
+    directDlink = f"https://streamsss.net/dl?op=download_orig$id={params[0]}&mode={params[1]}&hash={params[2]}"
+    return f"{directDlink} \n {size}"
 
 
+#  https://streamsss.net/dl?op=download_orig&id=iex7fbcb874o&mode=n&hash=1966241-78-9-1663997942-be09dc5929ef8f603bba371cfc405621
 
- 
+ #  https://sto036.akamai-cdn-content.com/tysxfjcs2k66j6cdadarrrsuhpdx26aoy5foa5asese7r4x5sd7c6ehmv3jq/doraemon-nobita-and-the-green-giant-legend-episode-1.mp4
  
 
 if __name__ == "__main__":
     None
+    
