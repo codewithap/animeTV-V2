@@ -51,7 +51,7 @@ def episodes(name):
 @cross_origin()
 def download(link):
     durl = getDownloadUrl(link)
-    return durl
+    return f"{durl}"
 
 
 
