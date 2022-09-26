@@ -42,7 +42,7 @@ def getDownloadUrl(epUrl):
         directDlink = f"https://streamsss.net/dl?op=download_orig&id={params[0]}&mode={params[1]}&hash={params[2]}"
         directDlinks.append(directDlink)
     arr = [directDlinks,epsize]
-    return 
+    return arr
 
 
 #  https://streamsss.net/dl?op=download_orig&id=iex7fbcb874o&mode=n&hash=1966241-78-9-1663997942-be09dc5929ef8f603bba371cfc405621
