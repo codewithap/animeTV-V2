@@ -31,8 +31,12 @@ def getDownloadUrl(epUrl):
     dUrl = html.select(".streamsb a")[0]["data-video"]
     download= requests.get(f"{dUrl.replace('https://streamsss.net/e/','https://streamsss.net/d/')}")
     html2 = BeautifulSoup(download.content,"html.parser")
-    downloadUrl = html2.select(".contentbox a")[0]["onclick"]
-    size = html2.select(".contentbox a")[0].get_text()
+    
+    downloadUrl = [] 
+    epsize = []
+    for x in html2.select(".contentbox a"):
+        downloadUrl.append(x["onclick"])
+        epsize.append(html2.select(".contentbox a").get_text())
     params = ((downloadUrl.replace("download_video('","")).replace("')","")).split("','")
     directDlink = f"https://streamsss.net/dl?op=download_orig&id={params[0]}&mode={params[1]}&hash={params[2]}"
     return f"{directDlink} \n {size}"
