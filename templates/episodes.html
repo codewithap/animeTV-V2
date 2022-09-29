@@ -1,13 +1,42 @@
 {%extends "base.html" %}
 {%block content%}
+
 <style>
-    #searchForm {
-        display: none;
-    }
+
+
 </style>
+<link rel="stylesheet" href="static/css/anime.css">
+<main id="main">
+
+<div class="info">
+<div class="background"></div>
+    <div class="iuehfuyr">
+        <div class="img" id="img">
+            <img src="" alt="">
+        </div>
+    
+        
+
+</div>
+<br>
+
+<div class="info">
+    
+    {% for i in range(len(ep)) %}
+    
+    <button> {(i)} </button>
+    {% endfor %}
+</div>
 
 
+</main><br><br><br>
+<script>
 
+    
 
+const base_url = "https://api.jikan.moe/v3/anime/{{animeId}}";
+
+</script>
+<script src="static/js/anime.js"></script>
 
 {% endblock %}
