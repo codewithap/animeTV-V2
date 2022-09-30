@@ -36,11 +36,14 @@ def anime():
 @app.route("/anime/<string:name>")
 def episodes(name):
     sname = name
+    
     animeId = request.args.get("id")
     uoChaecters = ["(",")"]
     for i in uoChaecters: 
         sname = sname.replace(i,"")
     #try:
+    if sname == "Black Clover": 
+        sname = "Black Clover tv"
     ep = getEpisodes(s(sname))
        # return f"{ep}"
     return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
