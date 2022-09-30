@@ -42,7 +42,7 @@ def episodes(name):
     #try:
     ep = getEpisodes(s(sname))
        # return f"{ep}"
-    return render_template("episodes.html",ep =ep ,s =sname)
+    return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep))
   #  except:
 #return "No episodes found on server"
 
