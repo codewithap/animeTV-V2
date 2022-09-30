@@ -1,5 +1,7 @@
-{% extends "base.html" %}
-{% block content%}
+
+
+{%extends "base.html" %}
+{%block content%}
 
 <style>
 
@@ -13,20 +15,35 @@
     <div class="iuehfuyr">
         <div class="img" id="img">
             <img src="" alt="">
+            <a id="WandDBtn" href="/anime/"><button id="watch">Watch & Download</button></a>
         </div>
     
-        
+        <div class="main">
+            <div class="desc" id="desc">
+                <span id="title" style="font-size: 1.3rem"></span><br>
+                
+            </div>
+        </div>
+    </div>
 
 </div>
 <br>
 
-<div class="info">
+
+<div class="info xjjgxxfh">
     
     {% for i in range(loopRange) %}
     
     <button> {{ep[i]}} </button>
+    
     {% endfor %}
+
 </div>
+
+</div>
+    
+<br>
+
 
 
 </main><br><br><br>
