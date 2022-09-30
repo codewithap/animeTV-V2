@@ -6,8 +6,8 @@
 <style>
 
     .watch{
-        padding: 3px 5px;
-        margin: 3px 5px;
+        padding: 10px;
+        margin: 3px;
     }
 
 </style>
@@ -37,7 +37,7 @@
     
     {% for i in range(loopRange) %}
     
-    <a style="margin: 4px" href="#"><button class="watch"> 1 </button></a>
+    <a href="/anime/episodes/{{ep[i]}}"><button class="watch"> {{i+1}} </button></a>
     
     {% endfor %}
 
