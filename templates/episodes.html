@@ -14,7 +14,7 @@
         font-weight: bold;
         color: #fff;
         height: 40px;
-        width: 40px;
+        width: 44px;
     }
     a{
         margin: 6px;
@@ -60,7 +60,17 @@
 
 </main><br><br><br>
 <script>
-
+    let btns = document.querySelectorAll('.watch');
+    for (let btn in btns){
+        btn.addEventListener('click',()=>{
+            if(localStorage.getItem('clicked')!=true){
+                localStorage.setItem('clicked',true);
+                btn.style.background='#000';
+            }else if(localStorage.getItem('clicked')==true){
+                btn.style.background='#000';
+            }
+        });
+    }
     
 
 const base_url = "https://api.jikan.moe/v3/anime/{{animeId}}";
