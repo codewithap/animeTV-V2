@@ -18,14 +18,11 @@
         </div>
     
         <div class="main">
-            <span id="title" style="font-size: 1.3rem"></span><br>
+            <div class="desc" id="desc">
+                <span id="title" style="font-size: 1.3rem"></span><br>
+                
+            </div>
         </div>
-        {% for i in range(loopRange) %}
-    
-    <button> {{ep[i]}} </button>
-    
-    {% endfor %}
-
     </div>
 
 </div>
@@ -36,7 +33,7 @@
     
     {% for i in range(loopRange) %}
     
-    <button> {{ep[i]}} </button>
+    <button> {{ep[i]}} </button><br>
     
     {% endfor %}
 
