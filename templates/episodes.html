@@ -1,3 +1,5 @@
+
+
 {%extends "base.html" %}
 {%block content%}
 
@@ -5,7 +7,7 @@
 
 
 </style>
-<link rel="stylesheet" href="static/css/anime.css">
+<link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
 <main id="main">
 
 <div class="info">
@@ -29,57 +31,19 @@
 
 
 <div class="info xjjgxxfh">
-    <div class="cards">
-        <h4>English</h4>
-        <p id="Animtitle"></p>
-
-    </div>
-
-    <div class="cards">
-        <h4>Japanese</h4>
-        <p id="title_japanese"></p>
-    </div>
-
-    <div class="cards">
-        <h4>Number Of Episodes</h4>
-        <p id="epnum"></p>
-    </div>
-
-    <div class="cards">
-        <h4>Duration</h4>
-        <p id="durationPerEp"></p>
-    </div>
-
-    <div class="cards">
-        <h4>Rank</h4>
-        <p id="rank"></p>
-    </div>
-
-    <div class="cards">
-        <h4>Start Date</h4>
-        <p id="startDate"></p>
-    </div>
-
-    <div class="cards">
-        <h4>End Date</h4>
-        <p id="endDate"></p>
-    </div>
     
+    {% for i in range(loopRange) %}
+    
+    <button> {{ep[i]}} </button>
+    
+    {% endfor %}
 
 </div>
 
 </div>
-    
     
 <br>
 
-<div class="info" style="flex-direction: column;">
-
-    <h2 style="text-align: center;display: block;">Trailer</h2>
-    <div class="iframe">
-        <iframe id="trailer" style="width: 450px; height: 255px;" frameborder="0"></iframe>
-    </div>
-</div>
 
 
 </main><br><br><br>
@@ -90,6 +54,6 @@
 const base_url = "https://api.jikan.moe/v3/anime/{{animeId}}";
 
 </script>
-<script src="static/js/anime.js"></script>
+<script src="{{ url_for('static', filename='js/anime.js') }}"></script>
 
 {% endblock %}
