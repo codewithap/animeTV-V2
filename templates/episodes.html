@@ -66,15 +66,6 @@
 
 </main><br><br><br>
 <script>
-    let btns = document.querySelectorAll('.watch');
-    for (let btn in btns){
-        btn.addEventListener('click',()=>{
-            if(localStorage.getItem('clicked')!=true){
-                localStorage.setItem('clicked',true);
-                btn.style.background='#000';
-            }
-        });
-    }
     
 
 const base_url = "https://api.jikan.moe/v3/anime/{{animeId}}";
