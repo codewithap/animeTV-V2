@@ -33,7 +33,7 @@ def episodes():
     uoChaecters = ["(",")"]
     for i in uoChaecters: 
         sname = sname.replace(i,"")
-    if sname == "Black Clover": 
+    if sname == "Black Clover":
         sname = "Black Clover tv"
     try:
         ep = getEpisodes(s(sname))

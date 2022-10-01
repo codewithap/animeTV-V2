@@ -116,6 +116,8 @@ iframe {
 .xjjgxxfh {
     flex-wrap: nowrap;
     overflow-x: auto;
+    align-items: center;
+
 }
 
 .cards {
@@ -126,7 +128,8 @@ iframe {
     word-wrap: break-word;
     min-width: 130px;
     border-right: 0.4px solid rgba(88, 88, 88, 0.821);
-    padding-right: 4px;
+    padding: 8px;
+
 }
 
 .cards p {
