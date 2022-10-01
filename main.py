@@ -36,7 +36,7 @@ def episodes(name):
     if sname == "Black Clover": 
         sname = "Black Clover tv"
     try:
-       ep = getEpisodes(s(sname))
+        ep = getEpisodes(s(sname))
        # return f"{ep}"
         return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
     except:
