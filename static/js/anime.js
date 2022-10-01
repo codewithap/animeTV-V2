@@ -5,12 +5,12 @@ let info = document.querySelector(".info");
 let trailer = document.querySelector("#trailer");
 let dBtn = document.querySelector('#WandDBtn');
 let d = "";
-   
+
 function search(url) {
     fetch(`${url}`)
-    .then(res => res.json())
-    .then(data => sResult(data))
-    .catch(err => console.warn(err.message));
+        .then(res => res.json())
+        .then(data => sResult(data))
+        .catch(err => console.warn(err.message));
 }
 
 function sResult(data) {
@@ -51,4 +51,3 @@ function readMoreLess() {
         moreText.style.display = "inline";
     }
 }
-
