@@ -26,9 +26,9 @@ def anime():
     animeId = request.args.get("id")
     return render_template("anime.html",animeId=animeId)
 
-@app.route("/anime/<string:name>")
-def episodes(name):
-    sname = name
+@app.route("/anime/e")
+def episodes():
+    sname = request.args.get("name")
     animeId = request.args.get("id")
     uoChaecters = ["(",")"]
     for i in uoChaecters: 
