@@ -35,6 +35,8 @@ def episodes():
         sname = sname.replace(i,"")
     if sname == "Black Clover":
         sname = "Black Clover tv"
+    elif sname == "Clannad: After Story"
+        sname ="clannad-after-story"
     try:
         ep = getEpisodes(s(sname))
        # return f"{ep}"
