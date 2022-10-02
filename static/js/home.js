@@ -75,7 +75,7 @@ function readMoreLess() {
 
 
 const sresult = document.querySelector("#topAnimes");
-const base_url = "https://api.jikan.moe/v3/top/anime";
+const base_url = "https://api.jikan.moe/v4/top/anime";
 
 
 function sleep(sleepDuration) {
