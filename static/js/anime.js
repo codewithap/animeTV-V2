@@ -18,7 +18,7 @@ function sResult(data) {
     img.src = data["images"]["jpg"]["large_image_url"];
     if(data["title_english"]!=null){
         title.innerHTML = data["title_english"];
-        dBtn.href += `?name=${data["title_english"]}&id=${id}`;
+        dBtn.href += `?name=${data["title"]}&id=${id}`;
     }else{
         title.innerHTML = data["title"];
         dBtn.href += `?name=${data["title"]}&id=${id}`;
