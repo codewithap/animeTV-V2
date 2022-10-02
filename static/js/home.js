@@ -1,21 +1,4 @@
-let button = document.querySelector('.nav-bar');
-let nav = document.querySelector('.nav');
-let body = document.querySelector('#body');
-let blur = document.querySelector('.blur');
-button.addEventListener('click', () => {
-    nav.style.width = '80%';
-    blur.classList.add('blur_bg');
-    nav.style.border = '2px solid rgba(255, 255, 255, 1)';
-    nav.style.padding = '0.7rem';
-});
-
-blur.addEventListener('click', () => {
-    nav.style.width = '0';
-    blur.classList.remove('blur_bg');
-    nav.style.border = 'none';
-    nav.style.padding = '0';
-});
-
+topanimes = document.querySelector(".btn button");
 document.oncontextmenu = function(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -85,21 +68,31 @@ function sleep(sleepDuration) {
     }
 }
 
-function search(url) {
+function search(url,z) {
     fetch(`${url}`)
         .then(res => res.json())
-        .then(data => sResult(data))
+        .then(data => sResult(data,z))
         .catch(err => console.warn(err.message));
 }
 
-function sResult(data) {
-    let animArr = data["top"]
+
+
+function sResult(data,z) {
+    console.log(data)
+    let animArr = data["data"]
     for (let i = 0; i < animArr.length; i++) {
-        sresult.innerHTML += template(animArr[i]["title"], animArr[i]["mal_id"], animArr[i]["image_url"], animArr[i]["rank"])
+        sresult.innerHTML += template(animArr[i]["title"], animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["image_url"], i+1,z)
     }
+    topanimes.innerHTML="Load More"
+    topanimes.setAttribute("style",`
+        color: black;
+        background: #dfdede;
+        transition: 0.4s ease-in-out;
+    `)
 }
 
-function template(title, id, imgUrl, rank) {
+function template(title, id, imgUrl, rank,z) {
+    if (z>1){rank = rank+((z-1)*25)}
     let length = (String(rank).length);
     return `
     <div class="card">
@@ -113,8 +106,19 @@ function template(title, id, imgUrl, rank) {
     `;
 }
 
-let pageNum = 2
+let pageNum = 4;
 for (let index = 1; index < pageNum + 1; index++) {
-    search(base_url + `/${index}`);
-    sleep(1500)
+    search(base_url +`?page=${index}`,index);
+    sleep(1500);
+}
+let f=4;
+function loadtopanimes(){
+    topanimes.innerHTML ="Loading...";
+    topanimes.setAttribute("style",`
+        color: white;
+        background: black;
+        transition: 0.4s ease-in-out;
+    `)
+    search(base_url +`?page=${f+1}`,f+1);
+    f+=1;
 }
