@@ -14,6 +14,9 @@ function search(url) {
 }
 
 function sResult(data) {
+    d += data
+    trailer.src = data["trailer"]["embed_url"]
+    document.querySelector("#Animtitle").innerHTML = data["title"];
     console.log(data);
     img.src = data["images"]["jpg"]["large_image_url"];
     if(data["title_english"]!=null){
@@ -27,10 +30,6 @@ function sResult(data) {
         ${data["synopsis"].slice(0,100)}<span id="dots">.....</span><span style="display: none" id="more">${data["synopsis"].slice(100,-1)}</span> &nbsp;&nbsp;&nbsp;<a style="color: blue" href="#" onclick="readMoreLess()" id="myBtn">Read More</a>
         `;
     // info.style.backgroundImage = `url('${data["image_url"]}')`;
-    d += data
-    trailer.src = data["trailer"]["embed_url"]
-    document.querySelector("#Animtitle").innerHTML = data["title"];
-    
     document.querySelector("#title_japanese").innerHTML = data["title_japanese"];
     document.querySelector("#epnum").innerHTML = data["episodes"];
     document.querySelector("#durationPerEp").innerHTML = data["duration"];
