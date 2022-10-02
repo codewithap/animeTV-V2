@@ -1,3 +1,7 @@
+const sresult = document.querySelector("#topAnimes");
+const base_url = "https://api.jikan.moe/v4/top/anime";
+
+
 topanimes = document.querySelector(".btn button");
 document.oncontextmenu = function(event) {
     event.preventDefault();
@@ -6,39 +10,6 @@ document.oncontextmenu = function(event) {
 };
 
 window.ondragstart = function() { return false; }
-
-
-let nightModeBtn = document.querySelector("#nightMode");
-let mode = localStorage.getItem("nightMode");
-
-if (mode == true) {
-    dark()
-}
-else if (mode == false) {
-    light()
-}
-
-
-function dark() {
-    document.querySelector("body").style.background = "#000";
-    document.querySelector("body").style.color = "#fff";
-}
-
-function light() {
-    document.querySelector("body").style.background = "#fff";
-    document.querySelector("body").style.color = "#000";
-}
-
-nightModeBtn.addEventListener("click", () => {
-    if (mode == null || mode == false) {
-        dark()
-        localStorage.setItem("nightMode", true)
-    }
-    else if (mode == true) {
-        light()
-        localStorage.setItem("nightMode", false)
-    }
-});
 
 function readMoreLess() {
     var dots = document.getElementById("dots");
@@ -56,11 +27,6 @@ function readMoreLess() {
     }
 }
 
-
-const sresult = document.querySelector("#topAnimes");
-const base_url = "https://api.jikan.moe/v4/top/anime";
-
-
 function sleep(sleepDuration) {
     var now = new Date().getTime();
     while (new Date().getTime() < now + sleepDuration) {
@@ -75,13 +41,11 @@ function search(url,z) {
         .catch(err => console.warn(err.message));
 }
 
-
-
 function sResult(data,z) {
     console.log(data)
     let animArr = data["data"]
     for (let i = 0; i < animArr.length; i++) {
-        sresult.innerHTML += template(animArr[i]["title"], animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["image_url"], i+1,z)
+        sresult.innerHTML += template(animArr[i]["title_english"], animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["image_url"], i+1,z)
     }
     topanimes.innerHTML="Load More"
     topanimes.setAttribute("style",`

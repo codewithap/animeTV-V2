@@ -1,21 +1,21 @@
 const sresult = document.querySelector("#Sresult");
-const base_url = "https://api.jikan.moe/v3";
+const base_url = "https://api.jikan.moe/v4";
 let last_page = "";
 let loadMore = document.querySelector("#loadMore");
 
 function search(url, pageNumber, query) {
     loadMore.innerHTML = "Loding...";
     loadMore.disabled = true;
-    fetch(`${url}/search/anime?q=${query}&page=${pageNumber}`)
+    fetch(`${url}/anime?q=${query}&page=${pageNumber}`)
         .then(res => res.json())
         .then(data => sResult(data))
-        .catch(err => err());
+        .catch(err => console.error(err));
 }
-
+// https://api.jikan.moe/v4/anime?q=naruto
 function sResult(data) {
-    let animArr = data["results"]
+    let animArr = data["data"]
     for (let i = 0; i < animArr.length; i++) {
-        sresult.innerHTML += template(animArr[i]["title"], animArr[i]["mal_id"], animArr[i]["image_url"]);
+        sresult.innerHTML += template(animArr[i]["title"], animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["image_url"]);
     }
     last_page = data["last_page"];
     loadMore.innerHTML = "Load More";
