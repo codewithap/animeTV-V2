@@ -1,5 +1,5 @@
 let img = document.querySelector("#img img");
-let title = document.querySelector("#desc span");
+let title = document.querySelector("#title");
 let desc = document.querySelector("#desc");
 let info = document.querySelector(".info");
 let trailer = document.querySelector("#trailer");
@@ -14,22 +14,23 @@ function search(url) {
 }
 
 function sResult(data) {
-    d += data
-    trailer.src = data["trailer"]["embed_url"]
-    document.querySelector("#Animtitle").innerHTML = data["title"];
     console.log(data);
+    let t = ""
     img.src = data["images"]["jpg"]["large_image_url"];
     if(data["title_english"]!=null){
-        title.innerHTML = data["title_english"];
-        dBtn.href += `?name=${data["title_english"]}&id=${id}`;
+        t = data["title_english"];
     }else{
-        title.innerHTML = data["title"];
-        dBtn.href += `?name=${data["title"]}&id=${id}`;
-    }
+        t = data["title"];
+    };
+    title.innerHTML = t;
     desc.innerHTML += `
         ${data["synopsis"].slice(0,100)}<span id="dots">.....</span><span style="display: none" id="more">${data["synopsis"].slice(100,-1)}</span> &nbsp;&nbsp;&nbsp;<a style="color: blue" href="#" onclick="readMoreLess()" id="myBtn">Read More</a>
         `;
     // info.style.backgroundImage = `url('${data["image_url"]}')`;
+    d += data;
+    dBtn.href += `?name=${t}&id=${id}`;
+    trailer.src = data["trailer"]["embed_url"]
+    document.querySelector("#Animtitle").innerHTML = data["title"];
     document.querySelector("#title_japanese").innerHTML = data["title_japanese"];
     document.querySelector("#epnum").innerHTML = data["episodes"];
     document.querySelector("#durationPerEp").innerHTML = data["duration"];

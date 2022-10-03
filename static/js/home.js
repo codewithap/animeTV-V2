@@ -69,13 +69,13 @@ function template(title, id, imgUrl, rank,z) {
         </div>
     `;
 }
-
-let pageNum = 4;
+topanimes.innerHTML ="Loading..."
+let pageNum = 2;
 for (let index = 1; index < pageNum + 1; index++) {
     search(base_url +`?page=${index}`,index);
     sleep(1500);
 }
-let f=4;
+let f=pageNum;
 function loadtopanimes(){
     topanimes.innerHTML ="Loading...";
     topanimes.setAttribute("style",`
