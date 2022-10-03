@@ -2,7 +2,10 @@ const sresult = document.querySelector("#topAnimes");
 const base_url = "https://api.jikan.moe/v4/top/anime";
 
 
+
+
 topanimes = document.querySelector(".btn button");
+
 document.oncontextmenu = function(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -69,7 +72,7 @@ function template(title, id, imgUrl, rank,z) {
         </div>
     `;
 }
-topanimes.innerHTML ="Loading..."
+
 let pageNum = 2;
 for (let index = 1; index < pageNum + 1; index++) {
     search(base_url +`?page=${index}`,index);

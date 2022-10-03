@@ -26,13 +26,15 @@ def anime():
     animeId = request.args.get("id")
     return render_template("anime.html",animeId=animeId)
 
-@app.route("/anime/e")
-def episodes():
+@app.route("/anime/<string:animeId>")
+def episodes(animeId):
     sname = request.args.get("name")
-    animeId = request.args.get("id")
-    uoChaecters = ["(",")"]
+    sjpname = request.args.get("jpname")
+    # animeId = request.args.get("id")
+    uoChaecters = ["(",")",":","."]
     for i in uoChaecters: 
         sname = sname.replace(i,"")
+        sjpname = sjpname.replace(i,"")
     if sname == "Black Clover":
         sname = "Black Clover tv"
     try:
@@ -40,7 +42,11 @@ def episodes():
        # return f"{ep}"
         return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
     except:
-        return "No episodes found on server"
+        try:
+            ep = getEpisodes(s(sjpname))
+            return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
+        except:
+            return "No episodes found on server"
 
 @app.route("/anime/episodes/<string:link>")
 @cross_origin()

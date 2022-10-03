@@ -28,15 +28,23 @@ function sResult(data) {
         `;
     // info.style.backgroundImage = `url('${data["image_url"]}')`;
     d += data;
-    dBtn.href += `?name=${t}&id=${id}`;
+    dBtn.href += `/${id}?name=${t}&jpname=${data["title"]}`;
     trailer.src = data["trailer"]["embed_url"]
     document.querySelector("#Animtitle").innerHTML = data["title"];
     document.querySelector("#title_japanese").innerHTML = data["title_japanese"];
     document.querySelector("#epnum").innerHTML = data["episodes"];
     document.querySelector("#durationPerEp").innerHTML = data["duration"];
     document.querySelector("#rank").innerHTML = data["rank"];
-    document.querySelector("#startDate").innerHTML = data["aired"]["string"].split("to")[0];
-    document.querySelector("#endDate").innerHTML = data["aired"]["string"].split("to")[1];
+    if(data["aired"]["string"].split("to")[1] == undefined){
+        document.querySelector("#endDate").parentElement.setAttribute("style","display: none;");
+        document.querySelector(".lastBorder").style.border = "none";
+        document.querySelector("#startDate").innerHTML = data["aired"]["string"].split("to")[0];
+    }else{
+        document.querySelector("#startDate").innerHTML = data["aired"]["string"].split("to")[0];
+        document.querySelector("#endDate").innerHTML = data["aired"]["string"].split("to")[1];
+    }
+    
+    console.log(data["aired"]["string"].split("to")[1])
 }
 
 search(base_anime_url)

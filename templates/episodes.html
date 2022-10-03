@@ -1,5 +1,3 @@
-
-
 {%extends "base.html" %}
 {%block content%}
 
@@ -29,27 +27,15 @@
 <link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
 <main id="main">
 
-<div class="info">
+<div class="info" style="flex-direction:column;">
 <div class="background"></div>
-    <div class="iuehfuyr">
-        <div class="img" id="img">
-            <img src="" alt="">
-        </div>
-    
-        <div class="main">
-            <div class="desc" id="desc">
-                <span id="title" style="font-size: 1.3rem"></span><br>
-                
-            </div>
-        </div>
-    </div>
+<section>
 
-</div>
+    <iframe id="video" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</section>
 <br>
-
-
-<div class="info" style="flex-direction: column;align-items: center;justify-content: center;">
-    <h2 style="text-align: center;text-decoration: underline;">Download Episodes</h2><br>
+<br><br>
     <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;">
         {% for i in range(loopRange) %}
         
@@ -57,10 +43,8 @@
         
         {% endfor %}
     </div>
-
 </div>
 
-</div>
     
 <br>
 
@@ -68,9 +52,10 @@
 
 </main><br><br><br>
 <script>
-    
+    const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}";
 
-const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}";
+    let video = document.querySelector("#video");
+    
 
 </script>
 <script src="{{ url_for('static', filename='js/anime.js') }}"></script>
