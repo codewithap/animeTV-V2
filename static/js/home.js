@@ -1,6 +1,10 @@
 const sresult = document.querySelector("#topAnimes");
 const base_url = "https://api.jikan.moe/v4/top/anime";
-let topanimes = document.querySelector(".btn button");
+
+
+
+
+topanimes = document.querySelector(".btn button");
 
 document.oncontextmenu = function(event) {
     event.preventDefault();
@@ -19,11 +23,17 @@ function readMoreLess() {
         dots.style.display = "inline";
         btnText.innerHTML = "Read more";
         moreText.style.display = "none";
-    } 
-    else {
+    } else {
         dots.style.display = "none";
         btnText.innerHTML = "Read less";
         moreText.style.display = "inline";
+    }
+}
+
+function sleep(sleepDuration) {
+    var now = new Date().getTime();
+    while (new Date().getTime() < now + sleepDuration) {
+        /* Do nothing */
     }
 }
 
@@ -55,9 +65,7 @@ function sResult(data,z) {
 }
 
 function template(title, id, imgUrl, rank,z) {
-    if (z>1){
-        rank = rank+((z-1)*25)
-    }
+    if (z>1){rank = rank+((z-1)*25)}
     let length = (String(rank).length);
     return `
     <div class="card">
@@ -76,7 +84,6 @@ for (let index = 1; index < pageNum + 1; index++) {
     search(base_url +`?page=${index}`,index);
     sleep(1500);
 }
-
 let f=pageNum;
 function loadtopanimes(){
     topanimes.innerHTML ="Loading...";
