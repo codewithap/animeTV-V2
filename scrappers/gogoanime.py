@@ -41,7 +41,7 @@ def getDownloadUrl(epUrl):
         params = ((d.replace("download_video('","")).replace("')","")).split("','")
         directDlink = f"https://streamsss.net/dl?op=download_orig&id={params[0]}&mode={params[1]}&hash={params[2]}"
         directDlinks.append(directDlink)
-    arr = [directDlinks,epsize]
+    arr = {"dlinks":directDlinks,"size":epsize,"embed_url":dUrl}
     return arr
 
 if __name__ == "__main__":

@@ -23,23 +23,36 @@
     .info a{
         margin: 6px;
     }
+
+    #video{
+        border:1px solid #000;
+        /* margin: auto; */
+    }
+
+    @media(max-width: 1500px) {
+        #video{
+            width: 100%;
+            
+        }
+    }
 </style>
 <link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
 <main id="main">
 
 <div class="info" style="flex-direction:column;">
 <div class="background"></div>
-<section>
+<section style="display: flex;align-items: center;justify-content:center">
 
-    <iframe id="video" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe id="video" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </section>
 <br>
-<br><br>
+<br><div id="ep"></div>
+<br>
     <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;">
         {% for i in range(loopRange) %}
         
-        <a href="/anime/episodes/{{ep[i]}}"><button class="watch"> {{i+1}} </button></a>
+        <a  onclick="startep('{{hostname}}/anime/episodes/{{ep[i]}}')"><button class="watch"> {{i+1}} </button></a>
         
         {% endfor %}
     </div>
@@ -52,10 +65,41 @@
 
 </main><br><br><br>
 <script>
-    const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}";
-
-    let video = document.querySelector("#video");
     
+    startep('{{hostname}}/anime/episodes/{{ep[0]}}');
+    const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}";
+    let video = document.querySelector("#video");
+    let epPerPage = 100;
+    let btns = document.querySelectorAll(".watch"); 
+    let q = document.querySelector("ep");
+    let nOfEp = {{loopRange}}
+    if (nOfEp >110){
+        for (let i = 0; i < nOfEp; i++) {
+            
+            
+            
+        }
+    }
+    let w = video.offsetWidth;
+    video.style.height = `${w/1.8}px`;
+    function startep(url){
+        fetch(`${url}`)
+        .then(res => res.json())
+        .then(data => ep(data))
+        .catch(err => console.warn(err));
+    }
+
+    function ep(data){
+        video.src = data["embed_url"];
+    }
+
+
+
+    addEventListener('resize', (event) => {
+        let w = video.offsetWidth;
+        video.style.height = `${w/1.8}px`;
+        console.log(w/1.7)
+    });
 
 </script>
 <script src="{{ url_for('static', filename='js/anime.js') }}"></script>

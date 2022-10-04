@@ -1,10 +1,6 @@
 const sresult = document.querySelector("#topAnimes");
 const base_url = "https://api.jikan.moe/v4/top/anime";
-
-
-
-
-topanimes = document.querySelector(".btn button");
+let topanimes = document.querySelector(".btn button");
 
 document.oncontextmenu = function(event) {
     event.preventDefault();
@@ -23,17 +19,11 @@ function readMoreLess() {
         dots.style.display = "inline";
         btnText.innerHTML = "Read more";
         moreText.style.display = "none";
-    } else {
+    } 
+    else {
         dots.style.display = "none";
         btnText.innerHTML = "Read less";
         moreText.style.display = "inline";
-    }
-}
-
-function sleep(sleepDuration) {
-    var now = new Date().getTime();
-    while (new Date().getTime() < now + sleepDuration) {
-        /* Do nothing */
     }
 }
 
@@ -48,7 +38,13 @@ function sResult(data,z) {
     console.log(data)
     let animArr = data["data"]
     for (let i = 0; i < animArr.length; i++) {
-        sresult.innerHTML += template(animArr[i]["title_english"], animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["image_url"], i+1,z)
+        let t
+        if(animArr[i]["title_english"] != null){
+            t = animArr[i]["title_english"];
+        }else{
+            t = animArr[i]["title"];
+        }
+        sresult.innerHTML += template(t, animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["image_url"], i+1,z)
     }
     topanimes.innerHTML="Load More"
     topanimes.setAttribute("style",`
@@ -59,7 +55,9 @@ function sResult(data,z) {
 }
 
 function template(title, id, imgUrl, rank,z) {
-    if (z>1){rank = rank+((z-1)*25)}
+    if (z>1){
+        rank = rank+((z-1)*25)
+    }
     let length = (String(rank).length);
     return `
     <div class="card">
@@ -78,6 +76,7 @@ for (let index = 1; index < pageNum + 1; index++) {
     search(base_url +`?page=${index}`,index);
     sleep(1500);
 }
+
 let f=pageNum;
 function loadtopanimes(){
     topanimes.innerHTML ="Loading...";

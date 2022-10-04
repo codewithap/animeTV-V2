@@ -28,6 +28,7 @@ def anime():
 
 @app.route("/anime/<string:animeId>")
 def episodes(animeId):
+    hostname = socket.gethostname()
     sname = request.args.get("name")
     sjpname = request.args.get("jpname")
     # animeId = request.args.get("id")
@@ -44,15 +45,15 @@ def episodes(animeId):
     except:
         try:
             ep = getEpisodes(s(sjpname))
-            return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
+            return render_template("episodes.html",hostname=hostname,ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
         except:
             return "No episodes found on server"
 
 @app.route("/anime/episodes/<string:link>")
 @cross_origin()
 def download(link):
-    durl = getDownloadUrl(link)
-    return f"{durl}"
+    jsondata = getDownloadUrl(link)
+    return jsondata
 
 if __name__ == "__main__":
     app.run(debug=True,host="0.0.0.0",port=80)
