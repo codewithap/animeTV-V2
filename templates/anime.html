@@ -2,7 +2,16 @@
 {%block content%}
 
 <style>
+@media(max-width: 700px) {
+        #trailer{
+            width: 100%;
+            
+        }
+    }
 
+    #trailer{
+        width: 700px;
+    }
 
 </style>
 <link rel="stylesheet" href="static/css/anime.css">
@@ -89,7 +98,7 @@
 
     <h2 style="text-align: center;display: block;">Trailer</h2>
     <div class="iframe">
-        <iframe id="trailer" style="width: 450px; height: 255px;" frameborder="0"></iframe>
+        <iframe id="trailer" frameborder="0"></iframe>
     </div>
 </div>
 
@@ -102,6 +111,14 @@
 const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}/full";
 const id = '{{animeId}}'
 
+
+addEventListener('resize', (event) => {
+    let w = document.querySelector("#trailer").offsetWidth;
+    document.querySelector("#trailer").style.height = `${w/1.8}px`;
+});
+
+let w = document.querySelector("#trailer").offsetWidth;
+    document.querySelector("#trailer").style.height = `${w/1.8}px`;
 </script>
 <script src="static/js/anime.js"></script>
 

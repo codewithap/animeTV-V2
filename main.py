@@ -39,13 +39,12 @@ def episodes(animeId):
     if sname == "Black Clover":
         sname = "Black Clover tv"
     try:
-        ep = getEpisodes(s(sname))
-       # return f"{ep}"
+        ep = getEpisodes(s(sjpname))
         return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
     except:
         try:
-            ep = getEpisodes(s(sjpname))
-            return render_template("episodes.html",hostname=hostname,ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
+            ep = getEpisodes(s(sname))
+            return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
         except:
             return "No episodes found on server"
 

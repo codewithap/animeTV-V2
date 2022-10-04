@@ -24,16 +24,15 @@
         margin: 6px;
     }
 
-    #video{
-        border:1px solid #000;
-        /* margin: auto; */
-    }
-
-    @media(max-width: 1500px) {
+    @media(max-width: 1000px) {
         #video{
             width: 100%;
             
         }
+    }
+
+    #video{
+        width: 1000px;
     }
 </style>
 <link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
@@ -49,7 +48,7 @@
 <br>
 <br><div id="ep"></div>
 <br>
-    <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;">
+    <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;max-width: 1000px;margin: auto;">
         {% for i in range(loopRange) %}
         
         <a  onclick="startep('{{hostname}}/anime/episodes/{{ep[i]}}')"><button class="watch"> {{i+1}} </button></a>
@@ -98,7 +97,6 @@
     addEventListener('resize', (event) => {
         let w = video.offsetWidth;
         video.style.height = `${w/1.8}px`;
-        console.log(w/1.7)
     });
 
 </script>

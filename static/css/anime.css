@@ -118,7 +118,13 @@ iframe {
     flex-wrap: nowrap;
     overflow-x: auto;
     align-items: top;
-    /* justify-content: space-evenly; */
+    /* justify-content: center; */
+}
+
+@media (min-width: 1000px) {
+    .xjjgxxfh{
+        justify-content: space-evenly;
+    }
 }
 
 .cards {
