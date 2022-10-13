@@ -31,27 +31,95 @@
         }
     }
 
+    #loder{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%;
+        height: 100%;
+        /* width: 100%; */
+        z-index: 6789;
+        background-color: rgba(255, 255, 255, 0.301);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+    }
+
+    .spinner{
+        width: 80px;
+        height: 80px;
+        border:4px solid transparent;
+        border-top:4px solid blue;
+        border-bottom:4px solid blue;
+        border-radius: 50%;
+        animation: loading 1.5s ease-in-out infinite;
+        /* background-color: #000; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+    }
+    #loder h3{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-35%,80%);
+    }
+
+    @keyframes loading{
+        from{
+            transform: rotate(0deg);
+        }
+
+        to{
+            transform: rotate(720deg);
+        }
+    }
+
+
     #video{
         width: 1000px;
     }
+
+    .active{
+        background-color: #000;
+    }
+
+    .watched{
+        background-color: rgb(1, 0, 49);
+    }
 </style>
 <link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
+<link rel="stylesheet" href="{{  url_for('static', filename='css/ep.css')  }}">
 <main id="main">
 
 <div class="info" style="flex-direction:column;">
 <div class="background"></div>
-<section style="display: flex;align-items: center;justify-content:center">
-
+<section id="animePlayer" style="display: flex;align-items: center;justify-content:center">
+    <div id="loder"><h3>Loading</h3><div class="spinner"></div></div>
     <iframe id="video" src="" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </section>
 <br>
-<br><div id="ep"></div>
+<br><div id="ep">
+    
+<div>
+    <h5 id="currentEp">You are watching Episode <span>1</span>.</h5>
+    
+</div>
+
+</div>
 <br>
     <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;max-width: 1000px;margin: auto;">
         {% for i in range(loopRange) %}
         
-        <a  onclick="startep('{{hostname}}/anime/episodes/{{ep[i]}}')"><button class="watch"> {{i+1}} </button></a>
+        <a  onclick="startep('{{hostname}}/anime/episodes/{{ep[i]}}',{{i+1}})"><button class="watch"> {{i+1}} </button></a>
         
         {% endfor %}
     </div>
@@ -63,33 +131,40 @@
 
 
 </main><br><br><br>
+<script src="{{ url_for('static',filename='js/ep.js') }}"></script>
 <script>
     
-    startep('{{hostname}}/anime/episodes/{{ep[0]}}');
-    const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}";
     let video = document.querySelector("#video");
+    let w = video.offsetWidth;
+    let player = document.querySelector("#loder");
+    const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}";
     let epPerPage = 100;
     let btns = document.querySelectorAll(".watch"); 
-    let q = document.querySelector("ep");
+    let q = document.querySelector("#ep");
     let nOfEp = {{loopRange}}
-    if (nOfEp >110){
-        for (let i = 0; i < nOfEp; i++) {
-            
-            
-            
-        }
-    }
-    let w = video.offsetWidth;
+
+    
+    
+    
+    console.log(player.offsetWidth)
     video.style.height = `${w/1.8}px`;
-    function startep(url){
+    // player.style.height = `${document.querySelector("body").offsetWidth/1.8}px`;
+    startep('{{hostname}}/anime/episodes/{{ep[0]}}',1);
+    function startep(url,epNo){
+        // video.style.display= "none";
+        player.style.display ="flex";
         fetch(`${url}`)
         .then(res => res.json())
-        .then(data => ep(data))
+        .then(data => ep(data,epNo))
         .catch(err => console.warn(err));
     }
 
-    function ep(data){
+    function ep(data,epNo){
+        player.style.display ="none";
+        let w = video.offsetWidth;
+        video.style.height = `${w/1.8}px`;
         video.src = data["embed_url"];
+        document.querySelector("#currentEp span").innerHTML = `${epNo}`;
     }
 
 
