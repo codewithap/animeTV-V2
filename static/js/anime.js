@@ -25,9 +25,12 @@ function sResult(data) {
         t = data["title"];
     };
     title.innerHTML = t;
-    desc.innerHTML += `
+    if(data["synopsis"]== null){
+        desc.innerHTML += ``;
+    }else{
+        desc.innerHTML += `
         ${data["synopsis"].slice(0,100)}<span id="dots">.....</span><span style="display: none" id="more">${data["synopsis"].slice(100,-1)}</span> &nbsp;&nbsp;&nbsp;<a style="color: blue" href="#" onclick="readMoreLess()" id="myBtn">Read More</a>
-        `;
+        `;}
     // info.style.backgroundImage = `url('${data["image_url"]}')`;
     d += data;
     dBtn.href += `/${id}?name=${t}&jpname=${data["title"]}`;

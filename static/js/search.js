@@ -2,8 +2,11 @@ const sresult = document.querySelector("#Sresult");
 const base_url = "https://api.jikan.moe/v4";
 let last_page = "";
 let loadMore = document.querySelector("#loadMore");
-
+let cover = document.querySelector(".black-cover");
+let Spinner = document.querySelector(".Spinner");
 function search(url, pageNumber, query) {
+    cover.style.display = "block";
+    Spinner.style.display = "block";
     loadMore.innerHTML = "Loding...";
     loadMore.disabled = true;
     fetch(`${url}/anime?q=${query}&page=${pageNumber}`)
@@ -20,6 +23,8 @@ function sResult(data) {
     last_page = data["last_page"];
     loadMore.innerHTML = "Load More";
     loadMore.disabled = false;
+    cover.style.display = "none";
+    Spinner.style.display = "none";
 }
 
 function template(title, id, imgUrl) {
