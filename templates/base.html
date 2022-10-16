@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
@@ -20,7 +21,7 @@
     </style>
     <title>AnimeTV | Home</title>
 </head>
-<body>
+<body><div class="black-cover"></div>
 <main id="body">
     <nav class="nav-navbar">
         <div class="nav-img">
@@ -40,7 +41,53 @@
     </form>
     
 
+    <div class="Spinner" style="display: block;"><!--
+    --><div class="Spinner-line Spinner-line--1"><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--left"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-ticker"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--center"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--right"></div><!--
+        --></div><!--
+    --></div><!--
+    --><div class="Spinner-line Spinner-line--2"><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--left"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-ticker"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--center"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--right"></div><!--
+        --></div><!--
+    --></div><!--
+    --><div class="Spinner-line Spinner-line--3"><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--left"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-ticker"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--center"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--right"></div><!--
+        --></div><!--
+    --></div><!--
+    --><div class="Spinner-line Spinner-line--4"><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--left"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-ticker"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--center"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--right"></div><!--
+        --></div><!--
+    --></div><!--
 
+--></div><!--/spinner -->
 {% block content %}
 {% endblock %}
 

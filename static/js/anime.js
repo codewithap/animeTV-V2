@@ -3,6 +3,8 @@ let title = document.querySelector("#title");
 let desc = document.querySelector("#desc");
 let info = document.querySelector(".info");
 let trailer = document.querySelector("#trailer");
+let cover = document.querySelector(".black-cover");
+let Spinner = document.querySelector(".Spinner");
 let dBtn = document.querySelector('#WandDBtn');
 let d = "";
 
@@ -45,6 +47,8 @@ function sResult(data) {
     }
     
     console.log(data["aired"]["string"].split("to")[1])
+    Spinner.style.display = "none";
+    cover.style.display = "none";
 }
 
 search(base_anime_url)

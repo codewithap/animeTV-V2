@@ -1,7 +1,9 @@
 const sresult = document.querySelector("#topAnimes");
 const base_url = "https://api.jikan.moe/v4/top/anime";
-
-
+let cover = document.querySelector(".black-cover");
+let Spinner = document.querySelector(".Spinner");
+let pageNum = 2;
+let f=2;
 topanimes = document.querySelector(".btn button");
 
 document.oncontextmenu = function(event) {
@@ -28,13 +30,6 @@ function readMoreLess() {
     }
 }
 
-function sleep(sleepDuration) {
-    var now = new Date().getTime();
-    while (new Date().getTime() < now + sleepDuration) {
-        /* Do nothing */
-    }
-}
-
 function search(url,z) {
     fetch(`${url}`)
         .then(res => res.json())
@@ -54,12 +49,15 @@ function sResult(data,z) {
         }
         sresult.innerHTML += template(t, animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["image_url"], i+1,z)
     }
-    topanimes.innerHTML="Load More"
+    topanimes.innerHTML="Load More";
+    cover.style.display = "none";
+    Spinner.style.display = "none";
     topanimes.setAttribute("style",`
         color: black;
         background: #dfdede;
         transition: 0.4s ease-in-out;
     `)
+
 }
 
 function template(title, id, imgUrl, rank,z) {
@@ -77,14 +75,14 @@ function template(title, id, imgUrl, rank,z) {
     `;
 }
 
-let pageNum = 2;
 for (let index = 1; index < pageNum + 1; index++) {
     search(base_url +`?page=${index}`,index);
-    sleep(1500);
 }
-let f=pageNum;
+
 function loadtopanimes(){
     topanimes.innerHTML ="Loading...";
+    cover.style.display="block";
+    Spinner.style.display = "block";
     topanimes.setAttribute("style",`
         color: white;
         background: black;
@@ -93,3 +91,5 @@ function loadtopanimes(){
     search(base_url +`?page=${f+1}`,f+1);
     f+=1;
 }
+
+
