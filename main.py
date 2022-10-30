@@ -36,7 +36,7 @@ def episodes(animeId):
     for i in uoChaecters: 
         sname = sname.replace(i,"")
         sjpname = sjpname.replace(i,"")
-    if sname == "Black Clover":
+    if "Black Clover" in [sname,sjpname]:
         sname = "Black Clover tv"
     try:
         ep = getEpisodes(s(sjpname))
