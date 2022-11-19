@@ -2,15 +2,17 @@ const sresult = document.querySelector("#topAnimes");
 const base_url = "https://api.jikan.moe/v4/top/anime";
 let cover = document.querySelector(".black-cover");
 let Spinner = document.querySelector(".Spinner");
-let pageNum = 2;
-let f=2;
+let pageNum = 1;
+let f=1;
 topanimes = document.querySelector(".btn button");
 
-document.oncontextmenu = function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    return false;
-};
+
+
+// document.oncontextmenu = function(event) {
+//     event.preventDefault();
+//     event.stopPropagation();
+//     return false;
+// };
 
 window.ondragstart = function() { return false; }
 

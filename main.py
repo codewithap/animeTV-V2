@@ -3,11 +3,7 @@ from flask_cors import CORS, cross_origin
 from scrappers.gogoanime import search as s
 from scrappers.gogoanime import getEpisodes,getDownloadUrl
 from requests import get
-from bs4 import BeautifulSoup
-import threading
-import subprocess
 import socket
-import os
 
 app = Flask(__name__)
 cors = CORS(app) 
@@ -36,10 +32,10 @@ def episodes(animeId):
     for i in uoChaecters: 
         sname = sname.replace(i,"")
         sjpname = sjpname.replace(i,"")
-    if "Black Clover" in [sname,sjpname]:
+    if sname == "Black Clover":
         sname = "Black Clover tv"
     try:
-        ep = getEpisodes(s(sjpname))
+        ep = getEpisodes(s(sjpname.lower()))
         return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)
     except:
         try:

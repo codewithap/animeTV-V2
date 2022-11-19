@@ -14,10 +14,48 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
     <style>
+        .liveSearch{
+            
+            width: 90%;
+            margin: 10px auto 0 auto;
+            /* padding: 10px; */
+            position: relative;
+            left: 0;
+            z-index: 9;
+            height: 2px;
+            
+        }
 
+        .content{
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 2px 2px 8px 0 rgba(109, 109, 109, 0.527);
+            max-height: 350px;
+            overflow: auto;
+        }
 
+        .result{
+            display: flex;
+            padding: 10px 15px;
+        }
+
+        .result:nth-child(even){
+            background-color: rgba(201, 201, 201, 0.356);
+        }
+
+        .title_and_desc{
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            color: black;
+        }
+
+        .title_and_desc small{
+          color: #333;   
+        }
     </style>
     <title>AnimeTV | Home</title>
 </head>
@@ -37,8 +75,13 @@
     <form class="search" id="searchForm" action="search" autocomplete="off">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-        </svg><input type="text" value="{{query}}" name="search" placeholder="Search Animas..."><button style="border-radius: 0 30px 30px 0;border:none;background-color: rgb(87, 87, 87);color: #eee;padding: 0 8px;">Search</button>
-    </form>
+        </svg><input id="input-box" type="text" value="{{query}}" name="search" placeholder="Search Animas..."><button style="border-radius: 0 30px 30px 0;border:none;background-color: rgb(87, 87, 87);color: #eee;padding: 0 8px;">Search</button>
+    </form><div class="liveSearch">
+        <div class="content">
+
+
+        </div>
+    </div><br>
     
 
     <div class="Spinner" style="display: block;"><!--
@@ -91,6 +134,44 @@
 {% block content %}
 {% endblock %}
 
+
+
+<script>
+    let liveSearch = document.querySelector(".liveSearch .content");
+    let inputBox = document.querySelector("#input-box");
+    inputBox.addEventListener("input",(e)=>{
+        livesearch("https://api.jikan.moe/v4", 1, inputBox.value)
+    });
+
+    function livesearch(url, pageNumber, query) {
+    fetch(`${url}/anime?q=${query}&page=${pageNumber}`)
+        .then(res => res.json())
+        .then(data => searchResult(data))
+        .catch(err => console.error(err));
+}
+// https://api.jikan.moe/v4/anime?q=naruto
+function searchResult(data) {
+    let animArr = data["data"];
+    document.querySelector(".content").innerHTML = ""
+    for (let i = 0; i < animArr.length; i++) {
+        document.querySelector(".content").innerHTML += searchTemplate(animArr[i]["title"], animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["small_image_url"],animArr[i]["type"],((animArr[i]["aired"]["string"]).split("to")[0]));
+    }
+    }
+    function searchTemplate(title,id,imgUrl,type,date){
+        data=`
+        <a style="text-decoration: none" href="/anime?id=${id}" class="result">
+                <img width="40" height="50" src="${imgUrl}" alt="">
+                <div class="title_and_desc">
+                    <strong>${title}</strong>
+                    <small>${date} &nbsp;<svg style="width: 5px; height: 5px; position:relative;bottom: 2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512z"/></svg>
+                        &nbsp; ${type}   &nbsp;<svg style="width: 5px; height: 5px; position:relative;bottom: 2px" style="width: 5px; height: 5px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512z"/></svg>
+                           &nbsp;24m</small>
+                </div>
+            </a>
+        `
+        return data
+    }
+</script>
 </main>
 
 <div class="blur"></div>
@@ -117,7 +198,6 @@
     </svg> Donations</button></a>
     
 </div>
-
 <script>
    let button = document.querySelector('.nav-bar');
    let nav = document.querySelector('.nav');

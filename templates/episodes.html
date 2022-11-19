@@ -84,7 +84,8 @@
     let video = document.querySelector("#video");
     const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}";
     let epPerPage = 100;
-    let btns = document.querySelectorAll(".watch"); 
+    let animeId = "{{ animeId }}"
+    localStorage.setItem(`${animeId}-1`, "1");
     let q = document.querySelector("#ep");
     // let nOfEp = {{loopRange}}
 
@@ -117,6 +118,28 @@
         let w = video.offsetWidth;
         video.style.height = `${w/1.8}px`;
     });
+
+    let btns = document.querySelectorAll(".watch"); 
+console.log(btns)
+
+btns.forEach(e => {
+    e.addEventListener("click",()=>{
+        e.style.background = "rgb(0, 12, 31)";
+        e.style.borderColor="transparent"
+        e.style.transition="0.4s";
+        localStorage.setItem(`${animeId}-${e.innerHTML}`, e.innerHTML);
+        
+    });
+    if (localStorage.getItem(`${animeId}-${e.innerHTML}`) == `${e.innerHTML}`){
+        e.style.background = "rgb(10, 30, 100)";
+        e.style.borderColor="transparent"
+        e.style.transition="0.4s";
+    }
+});
+
+
+
+
 
 </script>
 <script src="{{ url_for('static', filename='js/anime.js') }}"></script>

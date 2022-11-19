@@ -4,6 +4,10 @@ let last_page = "";
 let loadMore = document.querySelector("#loadMore");
 let cover = document.querySelector(".black-cover");
 let Spinner = document.querySelector(".Spinner");
+
+
+
+
 function search(url, pageNumber, query) {
     cover.style.display = "block";
     Spinner.style.display = "block";
