@@ -151,7 +151,7 @@
     });
 
     function livesearch(url, pageNumber, query) {
-        sleep(1000)
+
     fetch(`${url}/anime?q=${query}&page=${pageNumber}`)
         .then(res => res.json())
         .then(data => searchResult(data))
