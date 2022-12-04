@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request
 from flask_cors import CORS, cross_origin
-from scrappers.gogoanime import search as s
-from scrappers.gogoanime import getEpisodes,getDownloadUrl
+from api.scrappers.gogoanime import search as s
+from api.scrappers.gogoanime import getEpisodes,getDownloadUrl
 from requests import get
 import socket
 
