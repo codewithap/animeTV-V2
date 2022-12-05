@@ -48,8 +48,12 @@ function sResult(data) {
         document.querySelector("#startDate").innerHTML = data["aired"]["string"].split("to")[0];
         document.querySelector("#endDate").innerHTML = data["aired"]["string"].split("to")[1];
     }
-    
-    console.log(data["aired"]["string"].split("to")[1])
+    document.querySelector("head").innerHTML += `
+        <title>AnimeTV | ${data["title"]}</title>
+        <meta name="description" content="${data["synopsis"]}" />
+        <meta property="og:image" content="${data["images"]["jpg"]["small_image_url"]}" />
+        `
+    console.log(data["aired"]["string"].split("to")[1]);
     Spinner.style.display = "none";
     cover.style.display = "none";
 }
