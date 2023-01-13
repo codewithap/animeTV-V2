@@ -67,7 +67,7 @@ function template(title, id, imgUrl, rank,z) {
     let length = (String(rank).length);
     return `
     <div class="card">
-            <a href="/anime?id=${id}"><button>
+            <a href="/anime?id=${id}&url=${imgUrl}&title=${title}"><button>
                 <div style="background-image: url('${imgUrl}');height:16rem;width: 11rem">
                     <span class="rank" style="width: ${length+5}ch;height: ${length+4}ch">#${rank}</span>
                 </div>

@@ -10,7 +10,7 @@ cors = CORS(app)
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", url="https://www.animetv.ml/static/ap.png")
 
 @app.route("/search",methods = ["GET","POST"])
 def search():
@@ -20,7 +20,9 @@ def search():
 @app.route("/anime",methods=["GET","POST"])
 def anime():
     animeId = request.args.get("id")
-    return render_template("anime.html",animeId=animeId)
+    url = request.args.get("url")
+    title = request.args.get("title")
+    return render_template("anime.html",animeId=animeId,title = title,url=url)
 
 @app.route("/anime/<string:animeId>")
 def episodes(animeId):
