@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#ffffff">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#ffffff">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
+    <style>
+        .liveSearch{
+            
+            width: 90%;
+            margin: 10px auto 0 auto;
+            /* padding: 10px; */
+            position: relative;
+            left: 0;
+            z-index: 9;
+            height: 2px;
+            
+        }
+
+        .content{
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 2px 2px 8px 0 rgba(109, 109, 109, 0.527);
+            max-height: 350px;
+            overflow: auto;
+            transition: 0.4s ease-in;
+        }
+
+        .result{
+            display: flex;
+            padding: 10px 15px;
+        }
+
+        .result:nth-child(even){
+            background-color: rgba(201, 201, 201, 0.356);
+        }
+
+        .title_and_desc{
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            color: black;
+        }
+
+        .title_and_desc small{
+          color: #333;   
+        }
+    </style>
+    <title>AnimeTV | Watch Anime online for FREE</title>
+    <meta name="description" content="AnimeTV is the best free anime streaming website where you can watch English Subbed and Dubbed anime online."/>
+    
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <meta property="og:image" content="{{url}}" />
+        <meta property="og:title" content="{{title}}">
+</head>
+<body><div class="black-cover"></div>
+<main id="body">
+    <nav class="nav-navbar">
+        <div class="nav-img">
+            <img src="{{ url_for('static',filename='logo.png') }}">
+        </div>
+        <h2>AnimeTV</h2>
+        <div class="nav-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+        </div>
+    </nav>
+    <form class="search" id="searchForm" action="search" autocomplete="off">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+        </svg><input id="input-box" type="text" value="{{query}}" name="search" placeholder="Search Animas..."><button style="border-radius: 0 30px 30px 0;border:none;background-color: rgb(87, 87, 87);color: #eee;padding: 0 8px;">Search</button>
+    </form><div class="liveSearch">
+        <div class="content">
+
+
+        </div>
+    </div><br>
+    
+
+    <div class="Spinner" style="display: block;"><!--
+    --><div class="Spinner-line Spinner-line--1"><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--left"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-ticker"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--center"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--right"></div><!--
+        --></div><!--
+    --></div><!--
+    --><div class="Spinner-line Spinner-line--2"><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--left"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-ticker"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--center"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--right"></div><!--
+        --></div><!--
+    --></div><!--
+    --><div class="Spinner-line Spinner-line--3"><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--left"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-ticker"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--center"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--right"></div><!--
+        --></div><!--
+    --></div><!--
+    --><div class="Spinner-line Spinner-line--4"><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--left"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-ticker"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--center"></div><!--
+        --></div><!--
+        --><div class="Spinner-line-cog"><!--
+            --><div class="Spinner-line-cog-inner Spinner-line-cog-inner--right"></div><!--
+        --></div><!--
+    --></div><!--
+
+--></div><!--/spinner -->
+{% block content %}
+{% endblock %}
+
+
+
+<script>
+    let liveSearch = document.querySelector(".liveSearch .content");
+    let inputBox = document.querySelector("#input-box");
+    document.body.addEventListener("click",()=>{
+        liveSearch.style.maxHeight = 0;
+    });
+
+    inputBox.addEventListener("input",(e)=>{
+        liveSearch.style.maxHeight = "350px";
+        livesearch("https://api.jikan.moe/v4", 1, inputBox.value)
+        
+    });
+
+    function livesearch(url, pageNumber, query) {
+
+    fetch(`${url}/anime?q=${query}&page=${pageNumber}`)
+        .then(res => res.json())
+        .then(data => searchResult(data))
+        .catch(err => console.error(err));
+}
+// https://api.jikan.moe/v4/anime?q=naruto
+function searchResult(data) {
+    let animArr = data["data"];
+    document.querySelector(".content").innerHTML = ""
+    for (let i = 0; i < animArr.length; i++) {
+        document.querySelector(".content").innerHTML += searchTemplate(animArr[i]["title"], animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["small_image_url"],animArr[i]["type"],((animArr[i]["aired"]["string"]).split("to")[0]),animArr[i]['duration']);
+    }
+    }
+    function searchTemplate(title,id,imgUrl,type,date,duration){
+        data=`
+        <a style="text-decoration: none" href="/anime?id=${id}" class="result">
+                <img width="40" height="50" src="${imgUrl}" alt="">
+                <div class="title_and_desc">
+                    <strong>${title}</strong>
+                    <small>${date} &nbsp;<svg style="width: 5px; height: 5px; position:relative;bottom: 2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512z"/></svg>
+                        &nbsp; ${type}   &nbsp;<svg style="width: 5px; height: 5px; position:relative;bottom: 2px" style="width: 5px; height: 5px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512z"/></svg>
+                           &nbsp;${duration}</small>
+                </div>
+            </a>
+        `
+        return data
+    }
+</script>
+</main>
+
+<div class="blur"></div>
+<div class="nav">
+    <div class="info">
+        <div class="img">
+            <img src="{{ url_for('static', filename='logo.png')}}" alt="logo.png">
+        </div>
+        <div class="wInfo">
+            <h2>AnimeTv</h2>
+            <a href="#">www.animetv.com</a>
+        </div>
+    </div>
+    <br>
+    <a href="/"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-box" viewBox="0 0 16 16">
+        <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+    </svg> Home</button></a>
+    <button id="nightMode"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+    </svg> Night Mode</button>
+    <a href="#"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-gift-fill" viewBox="0 0 16 16">
+        <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7h6zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9H2.5z" />
+    </svg> Donations</button></a>
+    
+</div>
+<script>
+   let button = document.querySelector('.nav-bar');
+   let nav = document.querySelector('.nav');
+   let body = document.querySelector('#body');
+   let blur = document.querySelector('.blur');
+   button.addEventListener('click', () => {
+       nav.style.width = '80%';
+       blur.classList.add('blur_bg');
+       nav.style.border = '2px solid rgba(255, 255, 255, 1)';
+       nav.style.padding = '0.7rem';
+   });
+   
+   blur.addEventListener('click', () => {
+       nav.style.width = '0';
+       blur.classList.remove('blur_bg');
+       nav.style.border = 'none';
+       nav.style.padding = '0';
+   });
+</script>
+	
+	<script src="{{ url_for('static', filename='js/hook.js')}}"></script>
+</body>
+</html>

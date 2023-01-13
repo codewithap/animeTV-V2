@@ -1,0 +1,125 @@
+{%extends "base.html" %}
+{%block content%}
+
+<style>
+@media(max-width: 700px) {
+        #trailer{
+            width: 100%;
+            
+        }
+    }
+
+    #trailer{
+        width: 700px;
+    }
+
+</style>
+<link rel="stylesheet" href="static/css/anime.css">
+<main id="main">
+
+<div class="info">
+<div class="background"></div>
+    <div class="iuehfuyr">
+        <div class="img" id="img">
+            <img src="" alt="">
+            <a id="WandDBtn" href="/anime"><button id="watch">Watch & Download</button></a>
+        </div>
+    
+        <div class="main">
+            <div class="desc" id="desc">
+                <span id="title" style="font-size: 1.3rem"></span><br>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+
+
+<div class="info xjjgxxfh">
+    <div class="cards">
+        <h4>English</h4>
+        <p id="Animtitle"></p>
+
+    </div>
+
+    <div class="border"></div>
+
+    <div class="cards">
+        <h4>Japanese</h4>
+        <p id="title_japanese"></p>
+    </div>
+
+    <div class="border"></div>
+
+    <div class="cards">
+        <h4>Number Of Episodes</h4>
+        <p id="epnum"></p>
+    </div>
+
+    <div class="border"></div>
+
+    <div class="cards">
+        <h4>Duration</h4>
+        <p id="durationPerEp"></p>
+    </div>
+
+    <div class="border"></div>
+
+    <div class="cards">
+        <h4>Rank</h4>
+        <p id="rank"></p>
+    </div>
+
+    <div class="border"></div>
+
+    <div class="cards">
+        <h4>Start Date</h4>
+        <p id="startDate"></p>
+    </div>
+
+    <div class="border lastBorder"></div>
+
+    <div class="cards" style="border: none;">
+        <h4>End Date</h4>
+        <p id="endDate"></p>
+    </div>
+    
+
+</div>
+
+</div>
+    
+    
+<br>
+
+<div class="info" style="flex-direction: column;">
+
+    <h2 style="text-align: center;display: block;">Trailer</h2>
+    <div class="iframe">
+        <iframe id="trailer" frameborder="0"></iframe>
+    </div>
+</div>
+
+
+</main><br><br><br>
+<script>
+
+    
+
+const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}/full";
+const id = '{{animeId}}'
+
+
+addEventListener('resize', (event) => {
+    let w = document.querySelector("#trailer").offsetWidth;
+    document.querySelector("#trailer").style.height = `${w/1.8}px`;
+});
+
+let w = document.querySelector("#trailer").offsetWidth;
+    document.querySelector("#trailer").style.height = `${w/1.8}px`;
+</script>
+<script src="static/js/anime.js"></script>
+
+{% endblock %}
