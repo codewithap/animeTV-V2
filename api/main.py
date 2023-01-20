@@ -17,7 +17,7 @@ def search():
     query = request.args.get("search")
     return render_template("search.html",query=query)
 
-@app.route("/anime/<animeId>/<title>",methods=["GET","POST"])
+@app.route("/anime/<string:animeId>/<string:title>",methods=["GET","POST"])
 def anime(animeId,title):
     url = request.args.get("url")
     return render_template("anime.html",animeId=animeId,title = title,url=url)
