@@ -120,6 +120,6 @@ addEventListener('resize', (event) => {
 let w = document.querySelector("#trailer").offsetWidth;
     document.querySelector("#trailer").style.height = `${w/1.8}px`;
 </script>
-<script src="static/js/anime.js"></script>
+<script src="{{url_for('static', filename='js/anime.js')}}"></script>
 
 {% endblock %}
