@@ -35,8 +35,8 @@ function sResult(data) {
     d += data;
     dBtn.href += `/${id}?name=${t}&jpname=${data["title"]}`;
     if(data["trailer"]["embed_url"] != null){
-     trailer.src = data["trailer"]["embed_url"]
-    }else{trailer.src = '#'}
+     trailer.src = data["trailer"]["embed_url"];
+    }if(data["trailer"]["embed_url"] == null){trailer.src = '#'}
     document.querySelector("#Animtitle").innerHTML = data["title"];
     document.querySelector("#title_japanese").innerHTML = data["title_japanese"];
     document.querySelector("#epnum").innerHTML = data["episodes"];
