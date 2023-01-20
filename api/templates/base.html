@@ -172,7 +172,7 @@ function searchResult(data) {
     }
     function searchTemplate(title,id,imgUrl,type,date,duration){
         data=`
-        <a style="text-decoration: none" href="/anime?id=${id}" class="result">
+        <a style="text-decoration: none" href="/anime/${id}/${title}?url=${imgUrl}" class="result">
                 <img width="40" height="50" src="${imgUrl}" alt="">
                 <div class="title_and_desc">
                     <strong>${title}</strong>

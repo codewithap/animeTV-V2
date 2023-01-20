@@ -17,13 +17,11 @@ def search():
     query = request.args.get("search")
     return render_template("search.html",query=query)
 
-@app.route("/anime",methods=["GET","POST"])
-def anime():
-    animeId = request.args.get("id")
+@app.route("/anime/<aid>/<title>",methods=["GET","POST"])
+def anime(animeId,title):
     url = request.args.get("url")
-    title = request.args.get("title")
     return render_template("anime.html",animeId=animeId,title = title,url=url)
-
+id
 @app.route("/anime/<string:animeId>")
 def episodes(animeId):
     hostname = socket.gethostname()
