@@ -69,7 +69,7 @@
 <main id="body">
     <nav class="nav-navbar">
         <div class="nav-img">
-            <img src="{{ url_for('static',filename='logo.svg') }}">
+            <img alt="logo" src="{{ url_for('static',filename='logo.svg') }}">
         </div>
         <h2>AnimeTV</h2>
         <div class="nav-bar">
@@ -173,7 +173,7 @@ function searchResult(data) {
     function searchTemplate(title,id,imgUrl,type,date,duration){
         data=`
         <a style="text-decoration: none" href="/anime/${id}/${title}?url=${imgUrl}" class="result">
-                <img width="40" height="50" src="${imgUrl}" alt="">
+                <img width="40" height="50" src="${imgUrl}" alt="${title}">
                 <div class="title_and_desc">
                     <strong>${title}</strong>
                     <small>${date} &nbsp;<svg style="width: 5px; height: 5px; position:relative;bottom: 2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512z"/></svg>
@@ -191,7 +191,7 @@ function searchResult(data) {
 <div class="nav">
     <div class="info">
         <div class="img">
-            <img src="{{ url_for('static', filename='logo.svg')}}" alt="logo.png">
+            <img src="{{ url_for('static', filename='logo.svg')}}" alt="logo">
         </div>
         <div class="wInfo">
             <h2>AnimeTv</h2>
