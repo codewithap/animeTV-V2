@@ -11,6 +11,10 @@ cors = CORS(app)
 @app.route("/")
 def home():
     return render_template("home.html", url="https://www.animetv.ml/static/ap.png")
+    
+@app.route("/robots.txt")
+def robots():
+  return render_template("robots.txt")
 
 @app.route("/search",methods = ["GET","POST"])
 def search():
