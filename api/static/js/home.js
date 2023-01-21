@@ -49,7 +49,7 @@ function sResult(data,z) {
         }else{
             t = animArr[i]["title"];
         }
-        sresult.innerHTML += template(t, animArr[i]["mal_id"], animArr[i]["images"]["jpg"]["image_url"], i+1,z)
+        sresult.innerHTML += template(t, animArr[i]["mal_id"], animArr[i]["images"]["webp"]["small_image_url"], i+1,z)
     }
     topanimes.innerHTML="Load More";
     cover.style.display = "none";
