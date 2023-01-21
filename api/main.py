@@ -14,7 +14,7 @@ def home():
     
 @app.route("/robots.txt")
 def robots():
-  return render_template("robots.txt")
+  return url_for("static",filename = "robots.txt")
 
 @app.route("/search",methods = ["GET","POST"])
 def search():
