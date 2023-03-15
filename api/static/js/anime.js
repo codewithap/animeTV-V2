@@ -34,7 +34,7 @@ function sResult(data) {
     // info.style.backgroundImage = `url('${data["image_url"]}')`;
     d += data;
     dBtn.href += `/${id}?name=${t}&jpname=${data["title"]}`;
-    trailer.src = `${data["trailer"]["embed_url"]}`;
+    trailer.src = `${data["trailer"]["embed_url"]}#`;
     document.querySelector("#Animtitle").innerHTML = data["title"];
     document.querySelector("#title_japanese").innerHTML = data["title_japanese"];
     document.querySelector("#epnum").innerHTML = data["episodes"];
