@@ -63,6 +63,14 @@
       justify-content: center;
       flex-direction: column;
     }
+    
+    .eplist{
+      height: 400px;
+      overflow-y: auto;
+      background: #F4F4F4;
+      border-radius: 8px;
+      border: 1px solid #959595;
+    }
 </style>
 <link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
 <link rel="stylesheet" href="{{  url_for('static', filename='css/ep.css')  }}">
@@ -84,7 +92,7 @@
 </div>
 </div>
 <br>
-    <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;max-width: 1000px;margin: auto;">
+    <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;max-width: 1000px;margin: auto;" class="eplist">
         {% for i in range(loopRange) %}
         
         <a  onclick="startep('{{hostname}}/anime/episodes/{{ep[i]}}',{{i+1}})"><button class="watch"> {{i+1}} </button></a>
