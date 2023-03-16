@@ -70,7 +70,7 @@
 <br><div id="ep">
     
 <div>
-    <h5 id="currentEp">You are watching Episode <br> <span>1</span>.</h5>
+    <h5 id="currentEp">You are watching  <br> <span>Episode 1</span>.</h5>
     
 </div>
 
@@ -121,7 +121,7 @@
         video.src = data["embed_url"];
         Spinner.style.display = 'none';
         cover.style.display = "none";
-        document.querySelector("#currentEp span").innerHTML = `${epNo}`;
+        document.querySelector("#currentEp span").innerHTML = `Episode ${epNo}`;
     }
 
 
