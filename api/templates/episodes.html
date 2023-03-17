@@ -147,7 +147,7 @@
     <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;max-width: 1000px;margin: auto;" class="eplist">
         {% for i in range(loopRange) %}
         
-        <a  onclick="startep('{{hostname}}/anime/episodes/{{ep[i]}}',{{i+1}})"><button class="watch"> {{i+1}} </button></a>
+        <a style="display: none" onclick="startep('{{hostname}}/anime/episodes/{{ep[i]}}',{{i+1}})"><button class="watch"> {{i+1}} </button></a>
         
         {% endfor %}
     </div>
@@ -167,12 +167,20 @@
     let epPageNo = (Math.floor(epNo/100) + 1);
     let pageOption = document.querySelector('.options .inpselect');
     for (let i = 0; i < epPageNo; i++) {
-      pageOption.innerHTML += '<span>'+`${100*i} - ${100*(i+1)}`+'</span>'
+      pageOption.innerHTML += '<span onclick="changeList('+i+')">'+`${100*i} - ${100*(i+1)}`+'</span>'
     }
     let optionsHtml = '';
-    eplist.forEach(e =>{
-      //e.style.display = 'none';
+  
+  function changeList(y){
+    eplist.forEach(e => {
+      let epBtnNo = parseInt(e.innerText);
+      if(epBtnNo >= y*100 && epBtnNo < (y+1)*100){
+        e.style.display = 'block';
+      }
     })
+  }
+
+
 
     
     let video = document.querySelector("#video");
