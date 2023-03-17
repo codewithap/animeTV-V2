@@ -167,7 +167,7 @@
 <br>
 <div class="options">
   <div class="showEpPages">
-    <button class="openepmenue">
+    <button class="openepmenue" onclick="openCloseEpList()">
       <span class="activeList">000 - 100</span><i class="fa-sharp fa-solid fa-angle-down"></i>
     </button>
     <div class="inpselect">
@@ -194,7 +194,7 @@
 <script>
     let openepmenue = document.querySelector('.openepmenue');
     let opened = false;
-    openepmenue.addEventListener('click', () => {
+    function openCloseEpList(){
       if (opened == false) {
         inpselect.style.height = "200px";
         opened = true;
@@ -204,7 +204,7 @@
         opened = false;
       }
     
-    });
+    };
     
     let inpselect = document.querySelector('.inpselect');
     let eplist = document.querySelectorAll('.eplist a');
