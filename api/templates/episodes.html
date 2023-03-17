@@ -73,14 +73,14 @@
     }
     
     .inpselect{
-      height: 300px;
+      height: 200px;
       display: flex;
-      justify-content: center;
       flex-direction: column;
       border-radius: 8px;
       width: 150px;
       overflow: hidden;
       background: #1B1B1B;
+      overflow-y: auto;
     }
     
     .inpselect span{
@@ -94,6 +94,7 @@
       font-weight: bolder;
       font-size: 1.15rem;
       color: white;
+      outline: 3px solid #232323;
     }
 </style>
 <link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
