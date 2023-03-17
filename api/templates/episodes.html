@@ -121,10 +121,16 @@
     .activeList{
       padding: 0 15px;
       height: 100%;
-      width: 200px;
+      width: 150px;
       display: flex;
       align-items: center;
       font-weight: bolder;
+    }
+    
+    .openepmenue{
+      border: none;
+      background: #BEBEBE;
+      color: #252525;
     }
 </style>
 <link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
@@ -149,9 +155,9 @@
 <br>
 <div class="options">
   <div class="showEpPages">
-    <div class="openepmenue">
+    <button class="openepmenue">
       <span class="activeList">000 - 100</span><i class="fa-sharp fa-solid fa-angle-down"></i>
-    </div>
+    </button>
     <div class="inpselect">
     </div>
   </div>
