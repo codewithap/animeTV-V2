@@ -185,7 +185,7 @@
     }
     let optionsHtml = '';
   let opened = false;
-  openepmenue.addEventListener('click', =>(){
+  openepmenue.addEventListener('click', ()=>{
     if(opened == false){
       inpselect.style.height="100px";
       opened = true;
@@ -197,7 +197,7 @@
   });
   
   function changeList(y){
-    eplist.forEach(e =>(){
+    eplist.forEach(e =>{
       let epBtnNo = parseInt(e.innerText);
       if(epBtnNo >= y*100 && epBtnNo < (y+1)*100){
         e.style.display = 'block';
