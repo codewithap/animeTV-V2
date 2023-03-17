@@ -221,7 +221,8 @@
   let activeList = document.querySelector('.activeList');
   function changeList(y){
     eplist.forEach(e =>{
-      activeList.innerHTML = `${y*100} - ${(y+1)*100}`;
+      activeList.innerHTML = `${y*100} - ${(y+1)*100 - 1}`;
+      inpselect.style.height = "0";
       let epBtnNo = parseInt(e.innerText);
       if(epBtnNo >= y*100 && epBtnNo < (y+1)*100){
         e.style.display = 'block';
