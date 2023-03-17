@@ -85,6 +85,7 @@
       overflow: hidden;
       background: #1B1B1B;
       overflow-y: auto;
+      transition: 250ms;
     }
     
     .inpselect span{
@@ -109,11 +110,21 @@
       border-top-right-radius: 8px;
       border: 4px solid #CACACA;
       border-bottom: none;
+
     }
     
     .fa-sharp{
       position: relative;
       top: 5px;
+    }
+    
+    .activeList{
+      padding: 0 15px;
+      height: 100%;
+      width: 200px;
+      display: flex;
+      align-items: center;
+      font-weight: bolder;
     }
 </style>
 <link rel="stylesheet" href="{{  url_for('static', filename='css/anime.css') }}">
@@ -138,7 +149,9 @@
 <br>
 <div class="options">
   <div class="showEpPages">
-    <span class="activeList">000 - 100</span><i class="fa-sharp fa-solid fa-angle-down"></i>
+    <div class="openepmenue">
+      <span class="activeList">000 - 100</span><i class="fa-sharp fa-solid fa-angle-down"></i>
+    </div>
     <div class="inpselect">
     </div>
   </div>
@@ -161,7 +174,8 @@
 </main><br><br><br>
 <script src="{{ url_for('static',filename='js/ep.js') }}"></script>
 <script>
-
+    let openepmenue = document.querySelector('.openepmenue');
+    let inpselect = document.querySelector('.inpselect');
     let eplist = document.querySelectorAll('.eplist a');
     let epNo = eplist.length;
     let epPageNo = (Math.floor(epNo/100) + 1);
@@ -170,13 +184,26 @@
       pageOption.innerHTML += '<span onclick="changeList('+i+')">'+`${100*i} - ${100*(i+1)}`+'</span>'
     }
     let optionsHtml = '';
+  let opened = false;
+  openepmenue.addEventListener('click', =>{
+    if(opened == false){
+      inpselect.style.height="100px";
+      opened = true;
+    }else if(opened == true){
+      inpselect.style.height="0";
+      opened = false;
+    }
+    
+  });
   
   function changeList(y){
     eplist.forEach(e => {
       let epBtnNo = parseInt(e.innerText);
       if(epBtnNo >= y*100 && epBtnNo < (y+1)*100){
         e.style.display = 'block';
-      }
+      }else{
+        e.style.display = 'none';
+      } 
     })
   }
 
