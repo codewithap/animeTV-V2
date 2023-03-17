@@ -92,6 +92,11 @@
 </div>
 </div>
 <br>
+<div class="options">
+  <div class="inpselect">
+    
+  </div>
+</div>
     <div style="display: flex;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;max-width: 1000px;margin: auto;" class="eplist">
         {% for i in range(loopRange) %}
         
@@ -109,11 +114,25 @@
 </main><br><br><br>
 <script src="{{ url_for('static',filename='js/ep.js') }}"></script>
 <script>
+
+    let eplist = document.querySelectorAll('.eplist a');
+    let epNo = eplist.length;
+    let epPageNo = (Math.floor(epNo/100) + 1);
+    let pageOption = document.querySelector('.options');
+    for (let i = 0; i < epPageNo; i++) {
+      pageOption.innerHTML += '<span>'+`${100*i} - ${100*(i+1)}`+'</span>'
+    }
+    let optionsHtml = '';
+    eplist.forEach(e =>{
+      e.style.display = 'none';
+    })
+
     
     let video = document.querySelector("#video");
     const base_anime_url = "https://api.jikan.moe/v4/anime/{{animeId}}";
     let epPerPage = 100;
     let animeId = "{{ animeId }}"
+    
     localStorage.setItem(`${animeId}-1`, "1");
     let q = document.querySelector("#ep");
     // let nOfEp = {{loopRange}}
@@ -148,8 +167,7 @@
         video.style.height = `${w/1.8}px`;
     });
 
-    let btns = document.querySelectorAll(".watch"); 
-console.log(btns)
+    let btns = document.querySelectorAll(".watch");
 
 btns.forEach(e => {
     e.addEventListener("click",()=>{
