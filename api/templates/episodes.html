@@ -213,7 +213,7 @@
     let epPageNo = (Math.floor(epNo/100) + 1);
     let pageOption = document.querySelector('.options .inpselect');
     for (let i = 0; i < epPageNo; i++) {
-      pageOption.innerHTML += '<span onclick="changeList('+i+')">'+`${100*i} - ${100*(i+1)}`+'</span>'
+      pageOption.innerHTML += '<span onclick="changeList('+i+')">'+`${100*i} - ${100*(i+1) -1}`+'</span>'
     }
     let optionsHtml = '';
   
