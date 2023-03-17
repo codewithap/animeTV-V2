@@ -133,7 +133,7 @@
 <br>
 <div class="options">
   <div class="showEpPages">
-    
+    <i class="fa-sharp fa-solid fa-angle-down"></i>
     <div class="inpselect">
     </div>
   </div>
@@ -182,8 +182,6 @@
     let cover = document.querySelector(".black-cover");
     let Spinner = document.querySelector(".Spinner");
     
-    
-    
     startep('{{hostname}}/anime/episodes/{{ep[0]}}',1);
     function startep(url,epNo){
         Spinner.style.display = 'block';
@@ -200,7 +198,6 @@
         cover.style.display = "none";
         document.querySelector("#currentEp span").innerHTML = `Episode ${epNo}`;
     }
-
 
     let w = video.offsetWidth;
     video.style.height = `${w/1.8}px`;
@@ -225,10 +222,6 @@ btns.forEach(e => {
         e.style.transition="0.4s";
     }
 });
-
-
-
-
 
 </script>
 <script src="{{ url_for('static', filename='js/anime.js') }}"></script>
