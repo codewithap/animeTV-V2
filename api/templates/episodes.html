@@ -187,6 +187,19 @@
 <script src="{{ url_for('static',filename='js/ep.js') }}"></script>
 <script>
     let openepmenue = document.querySelector('.openepmenue');
+    let opened = false;
+    openepmenue.addEventListener('click', () => {
+      if (opened == false) {
+        inpselect.style.height = "100px";
+        opened = true;
+      }
+      else if(opened == true) {
+        inpselect.style.height = "0";
+        opened = false;
+      }
+    
+    });
+    
     let inpselect = document.querySelector('.inpselect');
     let eplist = document.querySelectorAll('.eplist a');
     let epNo = eplist.length;
@@ -196,17 +209,8 @@
       pageOption.innerHTML += '<span onclick="changeList('+i+')">'+`${100*i} - ${100*(i+1)}`+'</span>'
     }
     let optionsHtml = '';
-  let opened = false;
-  openepmenue.addEventListener('click', ()=>{
-    if(opened == false){
-      inpselect.style.height="100px";
-      opened = true;
-    }else if(opened == true){
-      inpselect.style.height="0";
-      opened = false;
-    }
-    
-  });
+  
+  
   
   function changeList(y){
     eplist.forEach(e =>{
