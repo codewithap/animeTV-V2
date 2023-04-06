@@ -19,9 +19,9 @@ def search():
 
 @app.route("/anime/<string:animeId>/<string:title>",methods=["GET","POST"])
 def anime(animeId,title):
-    url = request.args.get("url")
+    url = "https://cdn.myanimelist.net/images/anime/"+request.args.get("url")+".webp"
     return render_template("anime.html",animeId=animeId,title = title,url=url)
-id
+
 @app.route("/anime/<string:animeId>")
 def episodes(animeId):
     hostname = socket.gethostname()
@@ -32,8 +32,7 @@ def episodes(animeId):
     for i in uoChaecters: 
         sname = sname.replace(i,"")
         sjpname = sjpname.replace(i,"")
-    if sname == "Black Clover":
-        sname = "Black Clover tv"
+#https://www.animetv.ml/anime/5114/Fullmetal%20Alchemist:%20Brotherhood?url=1208/94745
     try:
         ep = getEpisodes(s(sjpname.lower()))
         return render_template("episodes.html",ep =ep ,s =sname,loopRange = len(ep),animeId=animeId)

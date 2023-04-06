@@ -34,7 +34,7 @@ function sResult(data) {
 function template(title, id, imgUrl) {
     return `
     <div class="card">
-            <a href="/anime/${id}/${title}?url=${imgUrl}"><button>
+            <a href="/anime/${id}/${title}?url=${(imgUrl.replace('https://cdn.myanimelist.net/images/anime/','')).replace('.webp','')}"><button>
                 <div>
                     <img loading="lazy" src="${imgUrl}">
                 </div>
