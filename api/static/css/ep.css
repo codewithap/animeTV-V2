@@ -1,4 +1,145 @@
-#ep{
-    display: flex;
-    align-items: center;
+#ep {
+  display: flex;
+  align-items: center;
+}
+
+.watch {
+  padding: 2px 0;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: 0.5px solid rgb(22, 125, 236);
+  background-color: rgb(0, 85, 212);
+  font-weight: bold;
+  color: #fff;
+  height: 40px;
+  width: 44px;
+}
+
+.watch:hover {
+  background: #000;
+  transition: 0.4s ease-in-out;
+}
+
+.info a {
+  margin: 6px;
+}
+
+@media(max-width: 1000px) {
+  #video {
+    width: 100%;
+
+  }
+}
+
+#video {
+  width: 1000px;
+}
+
+.active {
+  background-color: #000;
+}
+
+.watched {
+  background-color: rgb(1, 0, 49);
+}
+
+#currentEp {
+  font-size: 1rem;
+  text-align: center;
+  line-height: 20px;
+}
+
+#currentEp span {
+  color: #89DA00;
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+
+#ep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.eplist {
+  height: 400px;
+  overflow-y: scroll;
+  background: #F4F4F4;
+  border: 4px solid #CACACA;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  width: 100%;
+}
+
+.inpselect {
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  overflow: scroll;
+  background: #1B1B1B;
+  overflow-y: auto;
+  transition: 250ms;
+  z-index: 10;
+}
+
+.showEpPages {
+  height: 100%;
+}
+
+.inpselect span {
+  width: 100%;
+  height: 1.8rem;
+  background: #232323;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 1.15rem;
+  color: white;
+  border: 3px solid #232323;
+  border-bottom: 1px solid #bababa;
+}
+
+.options {
+  width: 100%;
+  height: 30px;
+  background: #E9E9E9;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border: 4px solid #CACACA;
+  border-bottom: none;
+  z-index: 10;
+}
+
+.fa-sharp {
+  position: relative;
+  top: 2px;
+  right: -3px;
+}
+
+.activeList {
+  height: 100%;
+  font-weight: bolder;
+}
+
+.openepmenue {
+  border: none;
+  background: #BEBEBE;
+  color: #252525;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  z-index: 10;
+}
+
+.openepmenue:hover {
+  color: #5EC904;
+  transition: 150ms ease-in-out;
 }
