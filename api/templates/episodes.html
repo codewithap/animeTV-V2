@@ -37,7 +37,7 @@
   </div>
   
 </div>
-    <div style="display: flex;flex-wrap: wrap;justify-content: center;max-width: 1000px;margin: auto;" class="eplist">
+    <div style="display: flex;flex-wrap: wrap;justify-content: center;align-items: center;max-width: 1000px;margin: auto;" class="eplist">
         {% for i in range(loopRange) %}
         <a style="display: none; height: 50px" onclick="startep('{{hostname}}/anime/episodes/{{ep[i]}}',{{i+1}})"><button class="watch"> {{i+1}} </button></a>
         {% endfor %}
