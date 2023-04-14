@@ -19,6 +19,11 @@ def search():
 
 @app.route("/anime/<string:animeId>/<string:title>",methods=["GET","POST"])
 def anime(animeId,title):
+    while 1: 
+      if " " in title:
+        title.replace(" ", "_")
+      else:
+        break
     url = "https://cdn.myanimelist.net/images/anime/"+request.args.get("url")+".webp"
     return render_template("anime.html",animeId=animeId,title = title,url=url)
 
